@@ -4,7 +4,7 @@ export default class LinearProgress extends Component {
 
 	render() {
 		return (
-			<div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate">
+			<div role="progressbar" className="mdc-linear-progress mdc-linear-progress--indeterminate ">
 				<div className="mdc-linear-progress__buffering-dots"/>
 				<div className="mdc-linear-progress__buffer"/>
 				<div className="mdc-linear-progress__bar mdc-linear-progress__primary-bar">

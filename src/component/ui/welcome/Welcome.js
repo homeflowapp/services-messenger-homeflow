@@ -12,7 +12,7 @@ export default class Welcome extends Component {
 		this.show_login = this.show_login.bind(this);
 		this.register = this.register.bind(this);
 		if (localStorage.getItem('uuid') !== '') {
-			//window.location = '#/services';
+			window.location = '#/services';
 		}
 	}
 

@@ -62,6 +62,12 @@ export default class ChannelsContainer extends Component {
 	}
 
 	create_channel(channelId) {
+		swal({
+			title: "Por favor espere",
+			text: "El servivio se esta agregando...",
+			button: false,
+		});
+
 		if (channelId === 'slack') {
 			swal({
 				title: "Servicio Slack",
