@@ -1,0 +1,90 @@
+.btn-thunder-primary {
+	background-color: #E86F35 !important;
+	color: #fff !important;
+	font-weight: bold;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	//box-shadow: 0 3px 6px #e8e8e8,0 1px 3px #7f7f7f;
+	box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+	outline: none;
+	border-radius: 50px;
+	width: 200px;
+
+	&:hover {
+		color: #E86F35 !important;
+		background-color: transparent;
+		border-color: #E86F35 !important;
+	}
+}
+
+.btn-thunder-primary-welcome {
+	background-color: #E86F35 !important;
+	color: #fff !important;
+	border: 3px solid white;
+	font-weight: bold;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	//box-shadow: 0 3px 6px #e8e8e8,0 1px 3px #7f7f7f;
+	box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+	outline: none;
+	border-radius: 50px;
+	width: 200px;
+
+	&:hover {
+		color: #ffffff;
+	}
+}
+
+.btn-thunder-secundary {
+	color: #E86F35 !important;
+	background-color: transparent;
+	border-color: #E86F35 !important;
+	font-weight: bold;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	font-family: 'mission_gothicregular', sans-serif;
+	outline: none;
+	//box-shadow: 0 3px 6px #e8e8e8,0 1px 3px #7f7f7f;
+	box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+	border-radius: 50px;
+	width: 200px;
+	&:hover {
+		color: #E86F35;
+	}
+}
+
+
+.btn-thunder-secundary-white {
+	color: #1a1a1a !important;
+	background-color: #ffffff !important;
+	font-weight: bold;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	font-family: 'mission_gothicregular', sans-serif;
+	outline: none;
+	padding-top: 10px;
+	//box-shadow: 0 3px 6px #e8e8e8,0 1px 3px #7f7f7f;
+	box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+	border-radius: 50px;
+	width: 200px;
+	&:hover {
+		color: #1a1a1a;
+	}
+}
+
+.btn-thunder-secundary-dark {
+	color: #ffffff !important;
+	background-color: #607D8B;
+	font-weight: 700;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	text-decoration: none;
+	font-family: mission_gothicregular,sans-serif;
+	outline: 0;
+	//box-shadow: 0 3px 6px #e8e8e8,0 1px 3px #7f7f7f;
+	box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}

@@ -1,0 +1,44 @@
+@font-face {
+	font-family: 'Google Sans';
+	src: url('../../../webfonts/google_sans.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Google Sans Mediun';
+	src: url('../../../webfonts/google_sans_medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Product Sans Regular';
+	src: url('../../../webfonts/product_sans_regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Product Sans Bold';
+	src: url('../../../webfonts/product_sans_bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.google_sans {
+	font-family: 'Google Sans', sans-serif;
+}
+
+.google_sans_medium {
+	font-family: 'Google Sans Mediun', sans-serif;
+}
+
+.product_sans_regular {
+	font-family: 'Product Sans Regular', sans-serif;
+}
+
+.product_sans_regular {
+	font-family: 'Product Sans Bold', sans-serif;
+}
+

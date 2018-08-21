@@ -1,0 +1,121 @@
+.thunder-menu {
+	.navbar-nav {
+		white-space: nowrap;
+		//overflow-x: auto;
+	}
+
+	.nav-link {
+		height: 46px;
+		padding: 0.1em 1.3rem;
+		color: #607d8b !important;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		cursor: pointer;
+
+		img {
+			width: 24px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		i.fa-2x {
+			font-size: 1.5em;
+		}
+
+		span.name {
+			font-size: 13px;
+		}
+
+		.thunder-badge {
+			margin-top: -31px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 14px;
+
+
+			//background-color: #09d261;
+			background-color: #E86F35;
+			//background-color: #dc3545;
+			border-radius: 50%;
+			padding: 0 5px 1px 5px;
+			text-align: center;
+			color: #fff;
+			font-size: 12px;
+			font-weight: 500;
+			width: 17px;
+			height: 17px;
+			max-height: 21px;
+			max-width: 21px;
+			vertical-align: top;
+		}
+	}
+
+	.nav-item.thunder-active {
+		background: #ffffff;
+		box-shadow: 4px 0 10px rgba(3, 169, 244, 0.22);
+		a.nav-link {
+			color: #039BE5!important;
+			span.name {
+				border-bottom: 2px solid #039BE5;
+				font-weight: bold;
+			}
+		}
+		.thunder-tabs {
+			width: 10%;
+			background: white;
+			z-index: 100;
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: -5px;
+			border-left: 1px solid #2196f32b;
+			transform: skew(-10deg);
+		}
+	}
+
+	.nav-item.nav-service {
+		padding-right: 1.1rem;
+		padding-left: 1.1rem;
+		transform: skew(10deg);
+		border-right: 1px solid #8181821a;
+		//border-right: 1px solid rgba(129, 129, 130, 0.09);
+		transform-origin: bottom right;
+		.nav-link {
+			transform: skew(-10deg);
+		}
+	}
+
+	ul.thunder-menu-icons {
+		padding: 0 8px;
+		//width: 245px;
+	}
+
+	.nav-link.icons {
+		i {
+			font-size: 18px;
+		}
+	}
+
+	a.avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 25px;
+		margin-top: 3px;
+		font-size: 23px;
+		font-weight: bold;
+		background: #007bff;
+		border: 4px solid #e9ecef94;
+		color: white !important;
+	}
+
+	/*.menu-scroll {
+		width: calc(100% - 240px);
+
+	}*/
+
+}
+
+

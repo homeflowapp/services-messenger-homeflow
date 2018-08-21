@@ -1,0 +1,61 @@
+body {
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+	overflow: hidden;
+	font-family: 'Ubuntu', sans-serif;
+	width: 100%;
+	height: 100%;
+
+	//yellow
+	//background: #FF9800;
+
+	//lemon
+	//background: #CDDC39;
+
+	//orange
+	//background: #e86f35;
+
+	// default
+	//background: #FFC107;
+	color: #1a1a1a!important;
+}
+
+.welcome-bg {
+	background: #FFC107 !important;
+}
+
+.service-bg {
+	background: #FFC107 !important;
+}
+
+.thunder-app {
+	.thunder-progress-hide {
+		display: none;
+	}
+
+	.thunder-progress-show {
+		display: block;
+	}
+
+	.thunder-content {
+		height: calc(100vh - 46px);
+	}
+
+	.thunder-navigation {
+		.thunder-menu {
+			background-color: #f7f7f9 !important;
+			padding: 0;
+			position: fixed;
+			right: 0;
+			left: 0;
+			z-index: 1030;
+			bottom: 0;
+			//box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.08);
+			box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.15);
+		}
+	}
+}
+

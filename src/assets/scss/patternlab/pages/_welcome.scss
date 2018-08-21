@@ -1,0 +1,89 @@
+.welcome {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		-webkit-transform: skewY(-12deg);
+		transform: skewY(-12deg);
+		background: #f6f9fc;
+	}
+
+	.welcome-app {
+		&:before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			-webkit-transform: skewY(12deg);
+			transform: skewY(12deg);
+			background: #607d8b12;
+			//background: rgba(96, 125, 139, 0.05);
+		}
+
+		.thunder {
+			color: #333 !important;
+		}
+		.description {
+			font-size: 1.1em;
+			margin-top: 10px;
+		}
+
+		.login {
+			display: flex;
+			justify-content: center;
+			margin-top: 30px;
+			a {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+		}
+
+		.welcome-services {
+			margin-top: 40px;
+			display: flex;
+			justify-content: center;
+			img {
+				width: 35px;
+				float: left;
+				margin: 8px;
+			}
+		}
+	}
+
+	.powered {
+		width: 100%;
+		position: absolute;
+		bottom: 50px;
+		text-align: center;
+		font-size: 14px;
+	}
+}
+
+.hide {
+	display: none !important;
+}
+
+.hide-modal {
+	animation: unfoldOut .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.show-modal {
+	transform:scale(0);
+	animation:  unfoldIn .3s .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.show-auth {
+	display: grid;
+}
+

@@ -1,0 +1,22 @@
+.status-bar {
+	width: 100%;
+	height: 46px;
+	//background: #f6f9fc;
+	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.16);
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	transition: all 0.9s ease;
+
+	.status {
+		//color: #607d8b;
+		color: white;
+		span {
+			margin-left: 10px;
+		}
+	}
+}

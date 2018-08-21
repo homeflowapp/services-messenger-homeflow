@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#000000">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+	<script crossorigin="anonymous" src="./react.js"></script>
+	<title>Thunder Labs</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+	const electron = require('electron').remote;
+	const { dev_mode } = require('./config/environment');
+
+	if (dev_mode) {
+		document.querySelector('body').classList.add(process.platform);
+		document.querySelector('body').classList.add('dev');
+
+		const host = 'http://localhost:35729';
+		const script = document.createElement('script');
+		script.async = true;
+
+		script.setAttribute('crossorigin', 'anonymous');
+		script.setAttribute('src', host + '/livereload.js');
+
+		document.body.appendChild(script);
+
+		script.onload = () => {
+			console.log('livereload loaded');
+
+			const originalReloadBehaviour = window._onLiveReloadFileChanged;
+
+			window._onLiveReloadFileChanged = (file) => {
+				if (!file.path.includes('/build/src/index.js')) {
+					originalReloadBehaviour(file);
+				} else {
+					electron.getCurrentWindow().reload();
+					console.log('Livereload: Reloading');
+				}
+			}
+		}
+	}
+</script>
+<!--<script src="./assets/js/jquery.js"></script>
+<script src="./assets/js/scroller.js"></script>
+<script src="./assets/js/menu.scroller.js"></script>-->
+</body>
+</html>
