@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import path from 'path';
+import swal from 'sweetalert'
 import '@babel/polyfill'
 import UserApi from "../../../api/UserApi";
 import {ChannelsWebView} from "../../services/ChannelsWebView";
@@ -8,6 +9,7 @@ import Navbar from "../../ui/navbar/Navbar";
 import Webview from "../../../webview/Webview";
 import ChannelApi from "../../../api/ChannelApi";
 
+let url;
 export default class ChannelsContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -60,15 +62,33 @@ export default class ChannelsContainer extends Component {
 	}
 
 	create_channel(channelId) {
-		const channel = ChannelApi.create(channelId);
-		Promise.resolve(channel.then((channel) => {
-			this.new_channel(channel.channel,channel.name, channel.url, channel.partition);
-		}));
+		if (channelId === 'slack') {
+			swal({
+				title: "Servicio Slack",
+				text: 'Agregue su canal de slack. Ej: thunder.slack.com',
+				content: "input",
+				button: {
+					text: "Agregar",
+					closeModal: false,
+				},
+			}).then(url => {
+				const channel = ChannelApi.create(channelId, url);
+				Promise.resolve(channel.then((channel) => {
+					this.new_channel(channel.channel, channel.name, channel.url, channel.partition);
+				}));
+			})
+		}
+		else  {
+			const channel = ChannelApi.create(channelId, url);
+			Promise.resolve(channel.then((channel) => {
+				this.new_channel(channel.channel, channel.name, channel.url, channel.partition);
+			}));
+		}
 	}
 
 	new_channel(channel, name, url, partition) {
 		const newItem = {
-			channel: service,
+			channel: channel,
 			name: name,
 			url: url,
 			partition: partition

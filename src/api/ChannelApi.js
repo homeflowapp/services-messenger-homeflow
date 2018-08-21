@@ -20,13 +20,14 @@ export default class ChannelApi {
 	}
 
 	// Create Channel
-	static async create(channel_id) {
+	static async create(channel_id, url) {
 		const user_id = localStorage.getItem('uuid');
 		const request = await window.fetch(`${server_api}/${version_api}/channels/channels_create`, this._prepareAuthRequest({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				channel_id,
-				user_id
+				user_id,
+				url
 			})),
 		}, false));
 
@@ -38,7 +39,7 @@ export default class ChannelApi {
 			title: "Servicio agregado!",
 			text: "Disfruta del servicio.",
 			icon: "success",
-			button: null,
+			button: 'Aceptar',
 		});
 
 		return await request.json();

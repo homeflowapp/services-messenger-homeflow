@@ -47,18 +47,18 @@
 
 		.service-container::-webkit-scrollbar {
 			width: 6px;
-			background-color: #F5F5F5;
+			//background-color: #F5F5F5;
 		}
 
 		.service-container::-webkit-scrollbar-thumb {
 			border-radius: 10px;
 			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-			background-color: #FFC107;
+			background-color: #f6f6f6;
 		}
 
 		.card-deck .card {
 			min-width: 160px;
-			margin: 6px;
+			//margin: 6px;
 			background: transparent;
 		}
 
