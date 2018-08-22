@@ -49,19 +49,18 @@ export default class NavbarRigth extends Component {
 					</a>
 				</li>
 
-				{/*<li className="nav-item icons">
+				<li className="nav-item icons">
 					<a className="nav-link icons"
 					   title={'Cerrar sesion'}
-					   onClick={NavbarRigth.logout}>
+					   onClick={this.logout}>
 						<i className="fas fa-power-off fa-lg"/>
 					</a>
-				</li>*/}
+				</li>
 
 				<li className="nav-item icons">
 					<a className="nav-link icons avatar"
-					   title={'Cerrar sesion'}
-					   onClick={this.logout}>
-						L
+					   title={'Cerrar sesion'}>
+						E
 						{/*<i className="fas fa-user-circle fa-3x"/>*/}
 					</a>
 				</li>
