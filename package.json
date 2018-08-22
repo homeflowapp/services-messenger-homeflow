@@ -66,6 +66,7 @@
     "gulp": "gulp",
     "dev": "gulp dev",
     "build": "gulp build",
-    "app": "electron-packager ./build thunder --asar=true --platform linux --arch x64 --out production/"
+    "linux": "electron-packager ./build thunder --asar=true --platform linux --arch x64 --out production/",
+    "mac": "electron-packager ./build Thunder --asar=true --platform darwin --arch x64 --out production/"
   }
 }
