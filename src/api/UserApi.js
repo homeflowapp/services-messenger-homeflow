@@ -2,7 +2,7 @@ import React from 'react'
 import '@babel/polyfill'
 import {server_api} from "../config/environment";
 import {version_api} from "../config/config";
-import swal from "sweetalert/typings/sweetalert";
+import swal from "sweetalert";
 
 export default class UserApi {
 
