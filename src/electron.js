@@ -5,8 +5,8 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS;
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 640
+    width: 1250,
+    height: 680
   });
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
