@@ -18,5 +18,15 @@
 		span {
 			margin-left: 10px;
 		}
+
+		.btn-outline-light {
+			padding: 0.225rem .75rem;
+			i {
+				margin-left: 5px;
+			}
+			&:hover {
+				color: #17a2b8!important;
+			}
+		}
 	}
 }

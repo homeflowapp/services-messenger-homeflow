@@ -1,15 +1,29 @@
 import { app, BrowserWindow, shell } from 'electron';
 import fs from 'fs-extra';
+import { realpathSync } from 'fs';
+import createSymlink from 'create-symlink';
 import path from 'path';
 import windowStateKeeper from 'electron-window-state';
 import {dev_mode, linux, macOS, windows} from "./config/environment";
+import version from '../package'
 
 let mainWindow;
 let willQuitApp = false;
+let node_modules_path;
+let loader_app_node_modules_path;
 
-fs.emptyDirSync(path.join(app.getPath('userData'), 'plugins', 'temp'));
+let path_version_app = path.join(app.getPath('userData'), 'version');
+let path_plugins = path.join(app.getPath('userData'), 'plugins');
+
+if (!fs.existsSync(path_version_app)) {
+	fs.emptyDirSync(path.join(path_version_app));
+}
+
+if (!fs.existsSync(path_plugins)) {
+	fs.emptyDirSync(path.join(path_plugins));
+}
+
 fs.ensureFileSync(path.join(app.getPath('userData'), 'window-state.json'));
-
 
 const instance = app.makeSingleInstance((argv) => {
 	if (mainWindow) {
@@ -42,28 +56,38 @@ const createWindow = () => {
 		minHeight: 600,
 		titleBarStyle: macOS ? 'hidden' : '',
 		frame: linux,
-		backgroundColor: '#ffffff',
+		backgroundColor: '#ffffff'
 	});
 
 	mainWindowState.manage(mainWindow);
-	mainWindow.loadURL(`file://${__dirname}/index.html`);
+	const loader_app = path.join(app.getPath('userData'), 'version', version.version, 'src');
+	loader_app_node_modules_path = path.join(loader_app, '../node_modules');
+
+	if (fs.existsSync(loader_app)) {
+		if (dev_mode) {
+			node_modules_path = path.join(__dirname, '../../', 'node_modules');
+			console.log('Modules dev')
+		} else {
+			node_modules_path = path.join(__dirname, '../', 'node_modules');
+			console.log('Modules prod')
+		}
+		createSymlink(path.join(node_modules_path), loader_app_node_modules_path).then(() => {
+			realpathSync(loader_app_node_modules_path);
+		});
+
+		console.log(loader_app);
+		mainWindow.loadURL(`file://${loader_app}/index.html`);
+	}
+	else {
+		mainWindow.loadURL(`file://${__dirname}/index.html`)
+	}
 
 	if (dev_mode) {
 		//mainWindow.webContents.openDevTools();
 	}
 
 	mainWindow.on('close', (e) => {
-		if (!willQuitApp) {
-			e.preventDefault();
-			if (windows || linux) {
-				mainWindow.minimize();
-			}
-			/*else {
-				mainWindow.hide();
-			}*/
-		} else {
-			app.quit();
-		}
+		app.quit();
 	});
 
 	mainWindow.on('minimize', () => {
@@ -106,5 +130,13 @@ app.on('activate', () => {
 	}
 });
 
+app.on('window-all-closed', function () {
+	if (process.platform !== 'darwin') {
+		app.quit()
+	}
+});
+
+
 app.setAsDefaultProtocolClient('thunder');
+
 

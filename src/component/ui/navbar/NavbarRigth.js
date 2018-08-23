@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import ServerUpdate from "../../../api/ServerUpdate";
 
 export default class NavbarRigth extends Component {
 	constructor(props) {
 		super(props);
 
 		this.logout = this.logout.bind(this);
+		this.showServices = this.showServices.bind(this);
 	}
 
 	logout() {

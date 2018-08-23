@@ -1,0 +1,32 @@
+import React, {Component} from 'react'
+import {Offline} from 'react-detect-offline'
+import ServerUpdate from "../../../api/ServerUpdate";
+
+export default class Update extends Component {
+	constructor(props) {
+		super(props)
+	}
+
+	update() {
+		ServerUpdate.UpdateApp(localStorage.getItem('version'));
+	}
+
+	render() {
+		return (
+			<div className={'is-update'}>
+				<span>
+					<div className={'status-bar bg-info'}>
+						<div className={'status'}>
+							<i className="fas fa-info-circle fa-lg"/>
+							<span>Thunder tiene una nueva actualizaci&oacute;n</span>
+							<span className={'btn btn-outline-light btn-download'} onClick={this.update}>
+								Descargar
+								<i className="fas fa-cloud-download-alt"/>
+							</span>
+						</div>
+					</div>
+				</span>
+			</div>
+		)
+	}
+}

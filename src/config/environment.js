@@ -3,8 +3,8 @@
  */
 import {develop, production} from "./config";
 
-export const dev_mode = true;
-export const live_api = false;
+export const dev_mode = false;
+export const live_api = true;
 
 export const macOS = process.platform === 'darwin';
 export const windows = process.platform === 'win32';
