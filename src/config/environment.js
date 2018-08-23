@@ -6,6 +6,11 @@ import {develop, production} from "./config";
 export const dev_mode = true;
 export const live_api = false;
 
+export const macOS = process.platform === 'darwin';
+export const windows = process.platform === 'win32';
+export const linux = process.platform === 'linux';
+
+
 let api;
 if (live_api) {
 	api = production;

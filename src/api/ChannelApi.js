@@ -1,6 +1,5 @@
 import React from 'react'
 import swal from 'sweetalert'
-import localStorage from 'mobx-localstorage';
 import '@babel/polyfill'
 import {server_api} from "../config/environment";
 import {version_api} from "../config/config";

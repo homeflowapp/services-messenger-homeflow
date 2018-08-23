@@ -11,8 +11,7 @@ import Welcome from "./component/ui/welcome/Welcome";
 import 'popper.js/dist/umd/popper'
 import 'bootstrap/js/dist/dropdown'
 import './menu/menu'
-
-
+import Loader from "./component/ui/welcome/Loader";
 smoothScroll.polyfill();
 
 webFrame.setVisualZoomLevelLimits(1, 1);
@@ -25,7 +24,8 @@ window.addEventListener('load', () => {
 		render() {
 			const preparedApp = (
 				<Router history={history}>
-					<Route path={'/'} component={Welcome}/>
+					<Route path={'/'} component={Loader}/>
+					<Route path={'/welcome'} component={Welcome}/>
 					<Route path={'/services'} component={App}/>
 				</Router>
 			);

@@ -48,7 +48,7 @@ export default class UserApi {
 		window.location = '#/services';
 	}
 
-	// Services User
+	// Channels User
 	static async channels() {
 		const request = await window.fetch(`${server_api}/${version_api}/channels/${localStorage.getItem('uuid')}/channels_users`, this._Request({
 			method: 'GET',
