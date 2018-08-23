@@ -21,7 +21,7 @@ function createWindow () {
 app.on('ready', createWindow);
 
 app.on('window-all-closed', function () {
-  if (process.platform === 'darwin' && process.platform !==) {
+  if (process.platform !== 'darwin') {
     app.quit()
   }
 });

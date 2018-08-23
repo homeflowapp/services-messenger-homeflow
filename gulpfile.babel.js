@@ -3,6 +3,7 @@ import gulp from 'gulp'
 import sass from 'gulp-sass'
 import babel from 'gulp-babel'
 import del from 'del'
+import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css'
 import server from 'gulp-server-livereload';
 import sassVariables from 'gulp-sass-variables';
@@ -88,10 +89,10 @@ export function html () {
 }
 
 export function mvpackage () {
-	return gulp.src(
-		[
-			'./package.json'
-		])
+	return gulp.src(['./package-prod.json'])
+		.pipe(rename({
+			basename: 'package'
+		}))
 		.pipe(gulp.dest(paths.dest))
 }
 
