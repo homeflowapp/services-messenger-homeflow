@@ -1,5 +1,4 @@
 import React from 'react'
-import localStorage from 'mobx-localstorage';
 import '@babel/polyfill'
 import {server_api} from "../config/environment";
 import {version_api} from "../config/config";
@@ -8,7 +7,7 @@ export default class UserApi {
 
 	// Login
 	static async login(email, password) {
-		const request = await window.fetch(`${server_api}/${version_api}/user/user_login`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/user/user_login`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				email,
@@ -23,13 +22,13 @@ export default class UserApi {
 		const data = await request.json();
 		localStorage.setItem('uuid', data.uuid);
 		localStorage.setItem('avatar', data.avatar);
-		console.log(data.uuid);
+		console.log(localStorage.getItem('uuid'));
 		window.location = '#/services';
 	}
 
 	// Register
 	static async register(name, email, password) {
-		const request = await window.fetch(`${server_api}/${version_api}/user/user_create`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/user/user_create`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				name,
@@ -51,7 +50,7 @@ export default class UserApi {
 
 	// Services User
 	static async channels() {
-		const request = await window.fetch(`${server_api}/${version_api}/channels/${localStorage.getItem('uuid')}/channels_users`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/channels/${localStorage.getItem('uuid')}/channels_users`, this._Request({
 			method: 'GET',
 		}));
 
@@ -63,7 +62,7 @@ export default class UserApi {
 	}
 
 	// Header Options
-	static _prepareAuthRequest(options) {
+	static _Request(options) {
 		const request = Object.assign(options, {
 			mode: 'cors',
 			headers: Object.assign({

@@ -3,7 +3,6 @@ import {Link} from 'react-router'
 import Login from "./Login";
 import Register from "./Register";
 import Intenert from "../statusbar/Intenert";
-import localStorage from "mobx-localstorage/lib/index";
 
 export default class Welcome extends Component {
 	constructor(props) {
@@ -11,7 +10,8 @@ export default class Welcome extends Component {
 
 		this.show_login = this.show_login.bind(this);
 		this.register = this.register.bind(this);
-		if (localStorage.getItem('uuid')) {
+
+		if (localStorage.getItem('uuid') !== null) {
 			window.location = '#/services';
 		}
 	}

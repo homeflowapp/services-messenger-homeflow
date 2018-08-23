@@ -8,7 +8,7 @@ import {version_api} from "../config/config";
 export default class ChannelApi {
 
 	static async channels() {
-		const request = await window.fetch(`${server_api}/${version_api}/channels/channels`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/channels/channels`, this._Request({
 			method: 'GET',
 		}));
 
@@ -22,7 +22,7 @@ export default class ChannelApi {
 	// Create Channel
 	static async create(channel_id, url) {
 		const user_id = localStorage.getItem('uuid');
-		const request = await window.fetch(`${server_api}/${version_api}/channels/channels_create`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/channels/channels_create`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				channel_id,
@@ -48,7 +48,7 @@ export default class ChannelApi {
 	// Remove Channel
 	static async delete(uuid) {
 		const user_id = localStorage.getItem('uuid');
-		const request = await window.fetch(`${server_api}/${version_api}/channels/channel_delete`, this._prepareAuthRequest({
+		const request = await window.fetch(`${server_api}/${version_api}/channels/channel_delete`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				uuid,
@@ -65,7 +65,7 @@ export default class ChannelApi {
 
 
 	// Header Options
-	static _prepareAuthRequest(options) {
+	static _Request(options) {
 		const request = Object.assign(options, {
 			mode: 'cors',
 			headers: Object.assign({

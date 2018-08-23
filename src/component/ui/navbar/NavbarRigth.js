@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import localStorage from "mobx-localstorage/lib/index";
 
 export default class NavbarRigth extends Component {
 	constructor(props) {
@@ -9,7 +8,7 @@ export default class NavbarRigth extends Component {
 	}
 
 	logout() {
-		localStorage.setItem('uuid', '');
+		localStorage.removeItem('uuid');
 		window.location = '#/#';
 	}
 

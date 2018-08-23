@@ -8,8 +8,10 @@ import smoothScroll from 'smoothscroll-polyfill';
 import App from "./component/app/App";
 import Welcome from "./component/ui/welcome/Welcome";
 
+import 'popper.js/dist/umd/popper'
 import 'bootstrap/js/dist/dropdown'
 import './menu/menu'
+
 
 smoothScroll.polyfill();
 
