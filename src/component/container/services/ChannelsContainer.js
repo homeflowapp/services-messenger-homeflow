@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import path from 'path';
 import swal from 'sweetalert'
 import '@babel/polyfill'
+
 import UserApi from "../../../api/UserApi";
 import {ChannelsWebView} from "../../services/ChannelsWebView";
 import LinearProgress from "../../ui/linear-progress/LinearProgress";
@@ -18,6 +19,7 @@ export default class ChannelsContainer extends Component {
 			channel_api: [],
 		};
 
+		this.webview = null;
 		this.connection = this.connection.bind(this);
 		this.create_channel = this.create_channel.bind(this);
 		this.hideModal = this.hideModal.bind(this);
@@ -87,16 +89,17 @@ export default class ChannelsContainer extends Component {
 		else  {
 			const channel = ChannelApi.create(channelId, url);
 			Promise.resolve(channel.then((channel) => {
-				this.new_channel(channel.channel, channel.name, channel.url, channel.partition);
+				this.new_channel(channel.channel, channel.name, channel.url, channel.uuid, channel.partition);
 			}));
 		}
 	}
 
-	new_channel(channel, name, url, partition) {
+	new_channel(channel, name, url, uuid, partition) {
 		const newItem = {
 			channel: channel,
 			name: name,
 			url: url,
+			uuid: uuid,
 			partition: partition
 		};
 
@@ -167,3 +170,4 @@ export default class ChannelsContainer extends Component {
 		)
 	}
 }
+

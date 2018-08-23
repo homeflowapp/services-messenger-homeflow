@@ -58,10 +58,8 @@ export default class NavbarRigth extends Component {
 				</li>
 
 				<li className="nav-item icons">
-					<a className="nav-link icons avatar"
-					   title={'Cerrar sesion'}>
-						E
-						{/*<i className="fas fa-user-circle fa-3x"/>*/}
+					<a className="nav-link icons avatar">
+						{localStorage.getItem('avatar')}
 					</a>
 				</li>
 			</ul>

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router'
+import ContextMenuTrigger from "react-contextmenu/modules/ContextMenuTrigger";
 import path from 'path'
-import UserApi from "../../../api/UserApi";
 import classnames from "classnames";
 import NavbarRigth from "./NavbarRigth";
+import ContextMenuChannel from "../channel-menu/ContextMenuChannel";
 
 let temp = 0;
 export default class Navbar extends Component {
@@ -42,7 +42,9 @@ export default class Navbar extends Component {
 						{
 							this.props.items.map((channel, index) => {
 								return (
+									<ContextMenuTrigger id={channel.channel+'-'+channel.partition+'-'+index} key={index}>
 									<li
+										id={'channel_menu-'+channel.partition}
 										className={classnames({
 											'nav-item ': true,
 											'nav-service ': true,
@@ -56,15 +58,18 @@ export default class Navbar extends Component {
 										</a>
 										<div className={'thunder-tabs'}/>
 									</li>
+									</ContextMenuTrigger>
 								)
 							})
 						}
 					</ul>
 
+					<ContextMenuChannel items={this.props.items}/>
 					<NavbarRigth/>
 				</div>
 			</nav>
 		);
 	}
 }
+
 

@@ -22,6 +22,7 @@ export default class UserApi {
 
 		const data = await request.json();
 		localStorage.setItem('uuid', data.uuid);
+		localStorage.setItem('avatar', data.avatar);
 		console.log(data.uuid);
 		window.location = '#/services';
 	}
@@ -43,6 +44,7 @@ export default class UserApi {
 
 		const data = await request.json();
 		localStorage.setItem('uuid', data.uuid);
+		localStorage.setItem('avatar', name.substr(0, 1).toUpperCase());
 		console.log(data.uuid);
 		window.location = '#/services';
 	}

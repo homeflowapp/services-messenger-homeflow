@@ -45,6 +45,24 @@ export default class ChannelApi {
 		return await request.json();
 	}
 
+	// Remove Channel
+	static async delete(uuid) {
+		const user_id = localStorage.getItem('uuid');
+		const request = await window.fetch(`${server_api}/${version_api}/channels/channel_delete`, this._prepareAuthRequest({
+			method: 'POST',
+			body: JSON.stringify(Object.assign({
+				uuid,
+				user_id
+			})),
+		}));
+
+		if (!request.ok) {
+			throw request;
+		}
+
+		return await request.json();
+	}
+
 
 	// Header Options
 	static _prepareAuthRequest(options) {

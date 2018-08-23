@@ -43,7 +43,7 @@ export default class Webview extends Component {
 				{
 					this.props.items.map((channel, index) => {
 						return (
-							<li style={width_li} className={'tabs_moved_li'} key={index}>
+							<li style={width_li} className={'tabs_moved_li'} key={index} id={'channel_webview-'+channel.partition}>
 								<webview
 									key={index}
 									id={channel.partition}

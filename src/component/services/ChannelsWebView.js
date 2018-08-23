@@ -58,4 +58,10 @@ export class ChannelsWebView {
 		});
 	}
 
+	static delete(index) {
+		document.querySelectorAll('webview')[index].remove();
+		document.querySelectorAll('react-contextmenu-wrapper')[index].remove();
+
+	}
+
 }
