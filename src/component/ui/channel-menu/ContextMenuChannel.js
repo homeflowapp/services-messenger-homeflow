@@ -10,22 +10,7 @@ export default class ContextMenuChannel extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			channels: []
-		};
-
 		this.delete_channel = this.delete_channel.bind(this);
-	}
-
-	componentDidMount() {
-		let clear = setInterval(() => {
-			const channels = UserApi.channels();
-			Promise.resolve(channels.then((channels) => this.setState({channels: channels})));
-
-			if (this.state.channels.length > 0) {
-				clearInterval(clear);
-			}
-		}, 2000);
 	}
 
 	delete_channel(uuid, partition, name) {
@@ -52,7 +37,7 @@ export default class ContextMenuChannel extends Component {
 		return (
 			<span>
 				{
-					this.state.channels.map((channel, index) => {
+					this.props.items.map((channel, index) => {
 						return (
 							<ContextMenu id={channel.channel+'-'+channel.partition+'-'+index} key={index}>
 								<MenuItem>

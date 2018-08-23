@@ -36,8 +36,8 @@ export default class ChannelApi {
 		}
 
 		swal({
-			title: "Servicio agregado!",
-			text: "Disfruta del servicio.",
+			title: "Canal agregado!",
+			text: "Disfruta del canal.",
 			icon: "success",
 			button: 'Aceptar',
 		});

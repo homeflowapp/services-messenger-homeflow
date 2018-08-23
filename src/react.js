@@ -10,7 +10,6 @@ import Welcome from "./component/ui/welcome/Welcome";
 
 import 'bootstrap/js/dist/dropdown'
 import './menu/menu'
-import ContextMenuChannels from "./component/ui/channel-menu/ContextMenuChannels ";
 
 smoothScroll.polyfill();
 

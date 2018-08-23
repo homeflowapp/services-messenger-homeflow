@@ -120,7 +120,7 @@ export default class ChannelsContainer extends Component {
 				<div className={'mx-auto services-list hide-services'}>
 					<div className={'services-box'}>
 						<div className={'services-title bg-thunder'}>
-							Servicios
+							Canales
 						</div>
 
 						<div className={'services-close'}>
