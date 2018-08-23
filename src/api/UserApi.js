@@ -2,11 +2,18 @@ import React from 'react'
 import '@babel/polyfill'
 import {server_api} from "../config/environment";
 import {version_api} from "../config/config";
+import swal from "sweetalert/typings/sweetalert";
 
 export default class UserApi {
 
 	// Login
 	static async login(email, password) {
+		swal({
+			title: "Por favor espere",
+			text: "Validando sus datos...",
+			button: false,
+		});
+
 		const request = await window.fetch(`${server_api}/${version_api}/user/user_login`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
@@ -23,11 +30,17 @@ export default class UserApi {
 		localStorage.setItem('uuid', data.uuid);
 		localStorage.setItem('avatar', data.avatar);
 		console.log(localStorage.getItem('uuid'));
+
 		window.location = '#/services';
 	}
 
 	// Register
 	static async register(name, email, password) {
+		swal({
+			title: "Por favor espere",
+			text: "Registrando sus datos...",
+			button: false,
+		});
 		const request = await window.fetch(`${server_api}/${version_api}/user/user_create`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
