@@ -3,8 +3,8 @@
  */
 import {develop, production} from "./config";
 
-export const dev_mode = true;
-export const live_api = false;
+export const dev_mode = false;
+export const live_api = true;
 
 let api;
 if (live_api) {
