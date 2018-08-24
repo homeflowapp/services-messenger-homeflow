@@ -12,7 +12,7 @@ export default class NavbarRigth extends Component {
 	logout() {
 		localStorage.removeItem('uuid');
 		localStorage.removeItem('avatar');
-		window.location = '#/#';
+		window.location = '#/welcome';
 	}
 
 	showServices() {
