@@ -30,6 +30,12 @@ export default class UserApi {
 		localStorage.setItem('uuid', data.uuid);
 		localStorage.setItem('avatar', data.avatar);
 		console.log(localStorage.getItem('uuid'));
+		swal({
+			title: "Buen trabajo!",
+			text: "La sesion fue un exito!",
+			icon: "success",
+			button: "Continuar",
+		});
 
 		window.location = '#/services';
 	}
@@ -57,6 +63,14 @@ export default class UserApi {
 		const data = await request.json();
 		localStorage.setItem('uuid', data.uuid);
 		localStorage.setItem('avatar', name.substr(0, 1).toUpperCase());
+
+		swal({
+			title: "Buen trabajo!",
+			text: "El registro fue un exito!",
+			icon: "success",
+			button: "Continuar",
+		});
+
 		console.log(data.uuid);
 		window.location = '#/services';
 	}
