@@ -33,7 +33,7 @@ export class ChannelsWebView {
 					},
 					{type: 'separator'},
 					{
-						label: 'Atras',
+						label: 'Atrás',
 						click: function() {
 							webview[i].goBack();
 						}
