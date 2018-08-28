@@ -2,6 +2,9 @@ import React from 'react'
 import { shell, remote } from 'electron'
 import url  from 'url'
 
+const Menu = remote.Menu;
+const app= remote.app;
+
 export class ChannelsWebView {
 
 	static ChannelsWebview(webview) {
@@ -15,6 +18,73 @@ export class ChannelsWebView {
 					badge.classList.remove('thunder-badge');
 					badge.innerHTML = event.channel;
 				}
+			});
+
+			webview[i].getWebContents().on('context-menu', (e, params) => {
+
+				console.log(params);
+				const WebviewMenu = Menu.buildFromTemplate([
+					{
+						label: 'Recargar página',
+						accelerator: 'CmdOrCtrl+Alt+R',
+						click: function() {
+							webview[i].reload();
+						}
+					},
+					{type: 'separator'},
+					{
+						label: 'Atras',
+						click: function() {
+							webview[i].goBack();
+						}
+					},
+					{
+						label: 'Adelante',
+						click: function() {
+							webview[i].goForward();
+						}
+					},
+					{type: 'separator'},
+					{
+						label: 'Cortar',
+						accelerator: 'CmdOrCtrl+X',
+						click: function() {
+							webview[i].cut();
+						}
+					},
+					{
+						label: 'Copiar',
+						accelerator: 'CmdOrCtrl+C',
+						click: function() {
+							webview[i].copy();
+						}
+					},
+					{
+						label: 'Pegar',
+						accelerator: 'CmdOrCtrl+V',
+						click: function() {
+							webview[i].paste();
+						}
+					},
+					{
+						label: 'Seleccionar todo',
+						accelerator: 'CmdOrCtrl+A',
+						click: function() {
+							webview[i].selectAll();
+						}
+					},
+					{type: 'separator'},
+					{
+						label: 'Salir de la aplicacion',
+						accelerator: 'CmdOrCtrl+Q',
+						click: function() {
+							app.quit();
+						}
+					},
+				]);
+
+				WebviewMenu.popup(remote.getCurrentWindow());
+
 			});
 
 			webview[i].addEventListener('dom-ready', () => {

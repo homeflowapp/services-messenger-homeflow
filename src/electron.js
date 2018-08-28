@@ -25,7 +25,7 @@ if (!fs.existsSync(path_plugins)) {
 
 fs.ensureFileSync(path.join(app.getPath('userData'), 'window-state.json'));
 
-const instance = app.makeSingleInstance((argv) => {
+/*const instance = app.makeSingleInstance((argv) => {
 	if (mainWindow) {
 		if (mainWindow.isMinimized()) mainWindow.restore();
 		mainWindow.focus();
@@ -35,7 +35,7 @@ const instance = app.makeSingleInstance((argv) => {
 if (instance) {
 	console.log('Thunder is already running. Exiting...');
 	app.exit();
-}
+}*/
 
 if (linux && ['Pantheon', 'Unity:Unity7'].indexOf(process.env.XDG_CURRENT_DESKTOP) !== -1) {
 	process.env.XDG_CURRENT_DESKTOP = 'Unity';

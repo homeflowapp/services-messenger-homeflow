@@ -4,7 +4,7 @@ import swal from 'sweetalert'
 import '@babel/polyfill'
 
 import UserApi from "../../../api/UserApi";
-import {ChannelsWebView} from "../../services/ChannelsWebView";
+import {ChannelsWebView} from "../../channels-webview/ChannelsWebView";
 import LinearProgress from "../../ui/linear-progress/LinearProgress";
 import Navbar from "../../ui/navbar/Navbar";
 import Webview from "../../../webview/Webview";

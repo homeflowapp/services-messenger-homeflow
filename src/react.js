@@ -11,6 +11,7 @@ import Welcome from "./component/ui/welcome/Welcome";
 import 'popper.js/dist/umd/popper'
 import 'bootstrap/js/dist/dropdown'
 import './menu/menu'
+import './menu/contextual-nenu'
 import Loader from "./component/ui/welcome/Loader";
 smoothScroll.polyfill();
 

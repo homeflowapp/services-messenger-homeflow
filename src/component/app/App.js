@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Intenert from "../ui/statusbar/Intenert";
-import ChannelsContainer from "../container/services/ChannelsContainer";
+import ChannelsContainer from "../container/channels/ChannelsContainer";
 import Update from "../ui/statusbar/Update";
 import {version} from '../../../package'
 import ServerUpdate from "../../api/ServerUpdate";

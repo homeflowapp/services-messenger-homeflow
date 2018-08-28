@@ -7,21 +7,55 @@ const BrowserWindow = remote.BrowserWindow;
 
 const template = [
 	{
-		label: 'Edit',
+		label: 'Archivo',
 		submenu: [
-			{role: 'undo'},
-			{role: 'redo'},
-			{type: 'separator'},
-			{role: 'cut'},
-			{role: 'copy'},
-			{role: 'paste'},
-			{role: 'pasteandmatchstyle'},
-			{role: 'delete'},
-			{role: 'selectall'}
+			{
+				label: 'Salir',
+				accelerator: 'CmdOrCtrl+Q',
+				click: function() {
+					app.quit();
+				}
+			}
 		]
 	},
 	{
-		label: 'View',
+		label: 'Editar',
+		submenu: [
+			{
+				label: 'Deshacer',
+				accelerator: 'CmdOrCtrl+Z',
+				role: 'undo'
+			},
+			{
+				label: 'Rehacer',
+				accelerator: 'Shift+CmdOrCtrl+Alt+Z',
+				role: 'redo'
+			},
+			{type: 'separator'},
+			{
+				label: 'Cortar',
+				accelerator: 'CmdOrCtrl+X',
+				role: 'cut'
+			},
+			{
+				label: 'Copiar',
+				accelerator: 'CmdOrCtrl+C',
+				role: 'copy'
+			},
+			{
+				label: 'Pegar',
+				accelerator: 'CmdOrCtrl+V',
+				role: 'paste'
+			},
+			{
+				label: 'Seleccionar todo',
+				accelerator: 'CmdOrCtrl+A',
+				role: 'selectall'
+			}
+		]
+	},
+	{
+		label: 'Ver',
 		submenu: [
 			{role: 'reload'},
 			{role: 'forcereload'},
@@ -35,13 +69,14 @@ const template = [
 		]
 	},
 	{
-		role: 'window',
+		role: 'Ventana',
 		submenu: [
 			{role: 'minimize'},
 			{role: 'close'}
 		]
 	},
 	{
+		label: 'Ayuda',
 		role: 'help',
 		submenu: [
 			{
