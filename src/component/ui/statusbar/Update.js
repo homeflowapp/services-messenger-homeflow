@@ -5,10 +5,11 @@ import ServerUpdate from "../../../api/ServerUpdate";
 export default class Update extends Component {
 	constructor(props) {
 		super(props)
+		this.update = this.update.bind(this);
 	}
 
-	update() {
-		ServerUpdate.UpdateApp(this.props.version);
+	update(version) {
+		ServerUpdate.UpdateApp(version);
 	}
 
 	render() {
@@ -19,7 +20,7 @@ export default class Update extends Component {
 						<div className={'status status-download'}>
 							<i className="fas fa-info-circle fa-lg"/>
 							<span>Thunder tiene una nueva actualizaci&oacute;n ( Thunder-{this.props.version} )</span>
-							<span className={'btn btn-outline-light btn-download'} onClick={this.update}>
+							<span className={'btn btn-outline-light btn-download'} onClick={() => this.update(this.props.version)}>
 								Descargar
 								<i className="fas fa-cloud-download-alt"/>
 							</span>

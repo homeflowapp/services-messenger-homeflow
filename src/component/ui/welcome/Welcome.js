@@ -58,31 +58,31 @@ export default class Welcome extends Component {
 
 						<div className={'col-12 welcome-services'}>
 							<a className={'image'}>
-								<img src={'./assets/images/services/slack.png'}/>
+								<img src={'./assets/media/images/services/slack.png'}/>
 							</a>
 
 							<a className={'image'}>
-								<img src={'./assets/images/services/active.png'}/>
+								<img src={'./assets/media/images/services/active.png'}/>
 							</a>
 
 							<a className={'image'}>
-								<img src={'./assets/images/services/github.png'}/>
+								<img src={'./assets/media/images/services/github.png'}/>
 							</a>
 
 							<a className={'image'}>
-								<img src={'./assets/images/services/gitlab.png'}/>
+								<img src={'./assets/media/images/services/gitlab.png'}/>
 							</a>
 
 							{/*	<a className={'image'}>
-								<img src={'./assets/images/services/messenger.png'}/>
+								<img src={'./assets/media/images/services/messenger.png'}/>
 							</a>*/}
 
 							<a className={'image'}>
-								<img src={'./assets/images/services/whatsapp.png'}/>
+								<img src={'./assets/media/images/services/whatsapp.png'}/>
 							</a>
 
 							<a className={'image'}>
-								<img src={'./assets/images/services/youtube.png'}/>
+								<img src={'./assets/media/images/services/youtube.png'}/>
 							</a>
 						</div>
 					</div>
