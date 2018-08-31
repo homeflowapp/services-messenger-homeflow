@@ -10,7 +10,7 @@ export default class Intenert extends Component {
 		return (
 			<Offline>
 				<span>
-					<div className={'status-bar bg-warning'}>
+					<div className={'status-bar bg-white'}>
 						<div className={'status'}>
 							<i className="fas fa-wifi fa-lg"/>
 							<span>Sin conexión a Internet</span>

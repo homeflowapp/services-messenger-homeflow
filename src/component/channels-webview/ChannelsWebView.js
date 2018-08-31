@@ -38,6 +38,9 @@ export class ChannelsWebView {
 
 						Notify.onclick = () => {
 							const tabs_moved = document.querySelector('#tabs_moved');
+							const tabs_moved_li = document.querySelectorAll('.tabs_moved_li');
+							const size = tabs_moved_li[i].style.width.replace('calc(', '');
+
 							let navs = document.querySelectorAll('li.nav-service');
 							for (let j = 0; j < navs.length; j += 1) {
 								navs[j].classList.remove('thunder-active');
@@ -47,7 +50,7 @@ export class ChannelsWebView {
 								tabs_moved.style.transform = "translateX(-0%)";
 								navs[i].classList.add('thunder-active');
 							} else {
-								const value = size.replace('%)', '') * id;
+								const value = size.replace('%)', '') * i;
 								tabs_moved.style.transform = "translateX(-" + value + "%)";
 								navs[i].classList.add('thunder-active');
 							}
@@ -171,7 +174,6 @@ export class ChannelsWebView {
 	static delete(index) {
 		document.querySelectorAll('webview')[index].remove();
 		document.querySelectorAll('react-contextmenu-wrapper')[index].remove();
-
 	}
 
 }
