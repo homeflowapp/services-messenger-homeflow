@@ -30,7 +30,7 @@ export class ChannelsWebView {
 				}
 
 				else if (event.channel === 'notification') {
-					Notification.requestPermission().then(() => {
+					Notification.requestPermission().then((result) => {
 						let Notify = new Notification(event.args[0], {
 							icon: path.join(__dirname, '../../plugins/' + event.target.title, 'icon.png'),
 							body: event.args[1]
