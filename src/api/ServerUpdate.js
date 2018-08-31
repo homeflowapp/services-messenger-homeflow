@@ -25,9 +25,7 @@ export default class ServerUpdate {
 			throw request;
 		}
 
-		const data = await request.json();
-		localStorage.setItem('version', data.version);
-		return data;
+		return await request.json();
 	}
 
 

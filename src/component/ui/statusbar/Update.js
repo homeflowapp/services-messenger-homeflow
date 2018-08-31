@@ -8,17 +8,17 @@ export default class Update extends Component {
 	}
 
 	update() {
-		ServerUpdate.UpdateApp(localStorage.getItem('version'));
+		ServerUpdate.UpdateApp(this.props.version);
 	}
 
 	render() {
 		return (
 			<div className={'is-update'}>
 				<span>
-					<div className={'status-bar bg-info'}>
-						<div className={'status'}>
+					<div className={'status-bar bg-white'}>
+						<div className={'status status-download'}>
 							<i className="fas fa-info-circle fa-lg"/>
-							<span>Thunder tiene una nueva actualizaci&oacute;n (Thunder-{this.props.version})</span>
+							<span>Thunder tiene una nueva actualizaci&oacute;n ( Thunder-{this.props.version} )</span>
 							<span className={'btn btn-outline-light btn-download'} onClick={this.update}>
 								Descargar
 								<i className="fas fa-cloud-download-alt"/>
