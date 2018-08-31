@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				temp = 0;
 			} else {
 				ipcRenderer.sendToHost('count-message', '•');
-				ipcRenderer.sendToHost('notification');
+				//ipcRenderer.sendToHost('notification');
 				temp = count;
 			}
 		}
