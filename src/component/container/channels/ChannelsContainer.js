@@ -58,6 +58,7 @@ export default class ChannelsContainer extends Component {
 			if (webview.length > 0) {
 				this.webview = webview;
 				ChannelsWebView.ChannelsWebview(webview);
+				//ChannelsWebView.openDevTools(webview, 0);
 				clearInterval(clear)
 			}
 		}, 1000);
@@ -66,7 +67,7 @@ export default class ChannelsContainer extends Component {
 	create_channel(channelId) {
 		swal({
 			title: "Por favor espere",
-			text: "El servivio se esta agregando...",
+			text: "El servicio se esta agregando...",
 			button: false,
 		});
 

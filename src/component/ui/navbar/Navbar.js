@@ -52,7 +52,7 @@ export default class Navbar extends Component {
 										})}
 										key={index}>
 										<a className="nav-link" onClick={() => this._tabSelected(index)}>
-											<img src={`file://${path.join(__dirname, '../../../plugins/' + channel.channel, 'icon.png')}`}/>
+											<img id={channel.partition + '-img'} src={`file://${path.join(__dirname, '../../../plugins/' + channel.channel, 'icon.png')}`}/>
 											<span id={channel.partition + '-app'}/>
 											<span className={'name'}>{channel.name}</span>
 										</a>

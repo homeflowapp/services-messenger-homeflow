@@ -43,14 +43,17 @@ export default class Webview extends Component {
 				{
 					this.props.items.map((channel, index) => {
 						return (
-							<li style={width_li} className={'tabs_moved_li'} key={index} id={'channel_webview-'+channel.partition}>
+							<li style={width_li} className={'tabs_moved_li'} key={index} id={'channel_webview-' + channel.partition}>
 								<webview
 									key={index}
 									id={channel.partition}
+									title={channel.channel}
 									src={channel.url}
 									partition={'persist:' + channel.partition}
 									preload={`file://${path.join(__dirname, '../plugins/' + channel.channel, 'plugin.js')}`}
-									autosize={'on'}/>
+									autosize={'on'}
+									plugins={'true'}
+									allowpopups={'true'}/>
 							</li>
 						)
 					})

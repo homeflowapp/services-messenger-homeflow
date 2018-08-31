@@ -18,7 +18,7 @@ export default class Update extends Component {
 					<div className={'status-bar bg-info'}>
 						<div className={'status'}>
 							<i className="fas fa-info-circle fa-lg"/>
-							<span>Thunder tiene una nueva actualizaci&oacute;n</span>
+							<span>Thunder tiene una nueva actualizaci&oacute;n (Thunder-{this.props.version})</span>
 							<span className={'btn btn-outline-light btn-download'} onClick={this.update}>
 								Descargar
 								<i className="fas fa-cloud-download-alt"/>

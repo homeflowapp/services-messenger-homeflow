@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				ipcRenderer.sendToHost('');
 				temp = 0;
 			} else {
-				ipcRenderer.sendToHost(count);
+				ipcRenderer.sendToHost('count-message', count);
+				ipcRenderer.sendToHost('notification', 'Messenger', 'Tienes nuevos mensajes');
 				temp = count;
 			}
 		}

@@ -16,19 +16,21 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
-		const version = ServerUpdate.Version();
-		Promise.resolve(version.then((version) => {
-			if (localStorage.getItem('version') !== version.version) {
-				this.setState({ update: version.version });
-			}
-		}));
+		setInterval(() => {
+			const version = ServerUpdate.Version();
+			Promise.resolve(version.then((version) => {
+				if (localStorage.getItem('version') !== version.version) {
+					this.setState({update: version.version});
+				}
+			}));
+		}, 100000);
 	}
 
 	render() {
 		return (
 			<span>
 				<Intenert/>
-				{ this.state.update && <Update/>}
+				{this.state.update && <Update version={this.state.update}/>}
 				<ChannelsContainer/>
 			</span>
 		)

@@ -1,9 +1,10 @@
 import React from 'react'
-import { shell, remote } from 'electron'
-import url  from 'url'
+import {shell, remote} from 'electron'
+import url from 'url'
+import path from 'path'
 
 const Menu = remote.Menu;
-const app= remote.app;
+const app = remote.app;
 
 export class ChannelsWebView {
 
@@ -11,13 +12,47 @@ export class ChannelsWebView {
 		for (let i = 0; i < webview.length; i += 1) {
 			webview[i].addEventListener('ipc-message', (event) => {
 				const badge = document.getElementById(event.target.id + '-app');
-				if (event.channel !== '') {
-					badge.classList.add('thunder-badge');
-					badge.innerHTML = event.channel;
-				} else {
-					badge.classList.remove('thunder-badge');
-					badge.innerHTML = event.channel;
+				const icon = document.getElementById(event.target.id + '-img');
+
+				if (event.channel === 'count-message') {
+					if (event.args[0]) {
+						badge.classList.add('thunder-badge');
+						badge.innerHTML = event.args[0];
+					}
+					else {
+						badge.classList.remove('thunder-badge');
+						badge.innerHTML = event.args[0];
+					}
 				}
+
+				else if (event.channel === 'icon') {
+					icon.setAttribute('src', event.args[0]);
+				}
+
+				else if (event.channel === 'notification') {
+					let myNotification = new Notification(event.args[0], {
+						icon: path.join(__dirname, '../../plugins/' + event.target.title, 'icon.png'),
+						body: event.args[1]
+					});
+
+					myNotification.onclick = () => {
+						const tabs_moved = document.querySelector('#tabs_moved');
+						let navs = document.querySelectorAll('li.nav-service');
+						for (let j = 0; j < navs.length; j += 1) {
+							navs[j].classList.remove('thunder-active');
+						}
+
+						if (i === 0) {
+							tabs_moved.style.transform = "translateX(-0%)";
+							navs[i].classList.add('thunder-active');
+						} else {
+							const value = size.replace('%)', '') * id;
+							tabs_moved.style.transform = "translateX(-" + value + "%)";
+							navs[i].classList.add('thunder-active');
+						}
+					}
+				}
+
 			});
 
 			webview[i].getWebContents().on('context-menu', (e, params) => {
@@ -27,20 +62,20 @@ export class ChannelsWebView {
 					{
 						label: 'Recargar página',
 						accelerator: 'CmdOrCtrl+Alt+R',
-						click: function() {
+						click: function () {
 							webview[i].reload();
 						}
 					},
 					{type: 'separator'},
 					{
 						label: 'Atrás',
-						click: function() {
+						click: function () {
 							webview[i].goBack();
 						}
 					},
 					{
 						label: 'Adelante',
-						click: function() {
+						click: function () {
 							webview[i].goForward();
 						}
 					},
@@ -48,36 +83,44 @@ export class ChannelsWebView {
 					{
 						label: 'Cortar',
 						accelerator: 'CmdOrCtrl+X',
-						click: function() {
+						click: function () {
 							webview[i].cut();
 						}
 					},
 					{
 						label: 'Copiar',
 						accelerator: 'CmdOrCtrl+C',
-						click: function() {
+						click: function () {
 							webview[i].copy();
 						}
 					},
 					{
 						label: 'Pegar',
 						accelerator: 'CmdOrCtrl+V',
-						click: function() {
+						click: function () {
 							webview[i].paste();
 						}
 					},
 					{
 						label: 'Seleccionar todo',
 						accelerator: 'CmdOrCtrl+A',
-						click: function() {
+						click: function () {
 							webview[i].selectAll();
+						}
+					},
+					{type: 'separator'},
+					{
+						label: 'Inspeccionar',
+						accelerator: 'CmdOrCtrl+A',
+						click: function () {
+							webview[i].openDevTools();
 						}
 					},
 					{type: 'separator'},
 					{
 						label: 'Salir de la aplicacion',
 						accelerator: 'CmdOrCtrl+Q',
-						click: function() {
+						click: function () {
 							app.quit();
 						}
 					},
@@ -112,11 +155,7 @@ export class ChannelsWebView {
 			webview[i].addEventListener('new-window', (e) => {
 				const protocol = url.parse(e.url).protocol;
 				if (protocol === 'http:' || protocol === 'https:') {
-					if (/(app|my)\.activecollab\.com/.test(e.url) || /(my|app)\.activecollab\.com/.test(e.url)) {
-						webview[i].loadURL(e.url);
-					} else {
-						shell.openExternal(e.url)
-					}
+					shell.openExternal(e.url);
 				}
 			});
 		}

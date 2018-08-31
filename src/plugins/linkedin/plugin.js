@@ -1,3 +1,4 @@
+/*
 module.exports = (Thunder) => {
     const getMessages = function getMessages() {
         const notification = document.querySelector("#notificationsCountValue").innerHTML;
@@ -12,4 +13,5 @@ module.exports = (Thunder) => {
 
     Thunder.loop(getMessages);
 };
+*/
 

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				ipcRenderer.sendToHost('');
 				temp = 0;
 			} else {
-				ipcRenderer.sendToHost(count);
+				ipcRenderer.sendToHost('count-message', count);
 				temp = count;
 			}
 		}
