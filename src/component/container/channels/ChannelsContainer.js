@@ -58,7 +58,6 @@ export default class ChannelsContainer extends Component {
 			if (webview.length > 0) {
 				this.webview = webview;
 				ChannelsWebView.ChannelsWebview(webview);
-				//ChannelsWebView.openDevTools(webview, 0);
 				clearInterval(clear)
 			}
 		}, 1000);
@@ -84,6 +83,7 @@ export default class ChannelsContainer extends Component {
 				const channel = ChannelApi.create(channelId, url);
 				Promise.resolve(channel.then((channel) => {
 					this.new_channel(channel.channel, channel.name, channel.url, channel.partition);
+					this.connection();
 				}));
 			})
 		}
@@ -91,6 +91,7 @@ export default class ChannelsContainer extends Component {
 			const channel = ChannelApi.create(channelId, url);
 			Promise.resolve(channel.then((channel) => {
 				this.new_channel(channel.channel, channel.name, channel.url, channel.uuid, channel.partition);
+				this.connection();
 			}));
 		}
 	}

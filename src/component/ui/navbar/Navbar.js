@@ -5,7 +5,7 @@ import classnames from "classnames";
 import NavbarRigth from "./NavbarRigth";
 import ContextMenuChannel from "../channel-menu/ContextMenuChannel";
 
-let temp = 0;
+let webview;
 export default class Navbar extends Component {
 	constructor(props) {
 		super(props);
@@ -16,21 +16,13 @@ export default class Navbar extends Component {
 		this.setState({active: 0});
 	}
 
-	_tabSelected(channelId) {
+	_tabSelected(channelId, channelPartition) {
 		this.setState({active: channelId}, () => {
-			if (channelId !== temp) {
-				const tabs_moved = document.querySelector('#tabs_moved');
-				const tabs_moved_li = document.querySelectorAll('.tabs_moved_li');
-				const size = tabs_moved_li[channelId].style.width.replace('calc(', '');
-
-				if (channelId === 0) {
-					tabs_moved.style.transform = "translateX(-0%)";
-				} else {
-					const value = size.replace('%)', '') * channelId;
-					tabs_moved.style.transform = "translateX(-" + value + "%)";
-				}
-				temp = channelId;
+			webview = document.querySelectorAll('webview');
+			for (let i = 0; i < webview.length; i += 1) {
+				webview[i].classList.remove('is-active');
 			}
+			document.querySelector('webview#'+channelPartition).classList.add('is-active');
 		});
 	}
 
@@ -51,7 +43,7 @@ export default class Navbar extends Component {
 											'thunder-active': this.state.active === index,
 										})}
 										key={index}>
-										<a className="nav-link" onClick={() => this._tabSelected(index)}>
+										<a className="nav-link" onClick={() => this._tabSelected(index, channel.partition)}>
 											<img id={channel.partition + '-img'} src={`file://${path.join(__dirname, '../../../plugins/' + channel.channel, 'icon.png')}`}/>
 											<span id={channel.partition + '-app'}/>
 											<span className={'name'}>{channel.name}</span>

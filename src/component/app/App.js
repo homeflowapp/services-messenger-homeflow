@@ -23,7 +23,7 @@ export default class App extends Component {
 					this.setState({update: v.version});
 				}
 			}));
-		}, 1000);
+		}, 10000);
 	}
 
 	render() {

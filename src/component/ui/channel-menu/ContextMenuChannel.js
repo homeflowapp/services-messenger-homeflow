@@ -2,10 +2,8 @@ import React, {Component} from "react";
 import swal from 'sweetalert'
 import ContextMenu from "react-contextmenu/modules/ContextMenu";
 import MenuItem from "react-contextmenu/modules/MenuItem";
-import UserApi from "../../../api/UserApi";
 import ChannelApi from "../../../api/ChannelApi";
 
-let index_menu = 0;
 export default class ContextMenuChannel extends Component {
 	constructor(props) {
 		super(props);
@@ -23,8 +21,8 @@ export default class ContextMenuChannel extends Component {
 		.then((willDelete) => {
 			if (willDelete) {
 				if (ChannelApi.delete(uuid)) {
-					document.getElementById('channel_webview-'+partition).remove();
-					document.getElementById('channel_menu-'+partition).remove();
+					document.querySelector('webview#'+partition).remove();
+					document.querySelector('#channel_menu-'+partition).remove();
 					swal("El canal a sido eliminado!", "", {
 						icon: "success",
 					});
