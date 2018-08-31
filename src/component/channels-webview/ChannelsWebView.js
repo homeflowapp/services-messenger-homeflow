@@ -30,29 +30,30 @@ export class ChannelsWebView {
 				}
 
 				else if (event.channel === 'notification') {
-					let myNotification = new Notification(event.args[0], {
-						icon: path.join(__dirname, '../../plugins/' + event.target.title, 'icon.png'),
-						body: event.args[1]
+					Notification.requestPermission().then(() => {
+						let Notify = new Notification(event.args[0], {
+							icon: path.join(__dirname, '../../plugins/' + event.target.title, 'icon.png'),
+							body: event.args[1]
+						});
+
+						Notify.onclick = () => {
+							const tabs_moved = document.querySelector('#tabs_moved');
+							let navs = document.querySelectorAll('li.nav-service');
+							for (let j = 0; j < navs.length; j += 1) {
+								navs[j].classList.remove('thunder-active');
+							}
+
+							if (i === 0) {
+								tabs_moved.style.transform = "translateX(-0%)";
+								navs[i].classList.add('thunder-active');
+							} else {
+								const value = size.replace('%)', '') * id;
+								tabs_moved.style.transform = "translateX(-" + value + "%)";
+								navs[i].classList.add('thunder-active');
+							}
+						}
 					});
-
-					myNotification.onclick = () => {
-						const tabs_moved = document.querySelector('#tabs_moved');
-						let navs = document.querySelectorAll('li.nav-service');
-						for (let j = 0; j < navs.length; j += 1) {
-							navs[j].classList.remove('thunder-active');
-						}
-
-						if (i === 0) {
-							tabs_moved.style.transform = "translateX(-0%)";
-							navs[i].classList.add('thunder-active');
-						} else {
-							const value = size.replace('%)', '') * id;
-							tabs_moved.style.transform = "translateX(-" + value + "%)";
-							navs[i].classList.add('thunder-active');
-						}
-					}
 				}
-
 			});
 
 			webview[i].getWebContents().on('context-menu', (e, params) => {
