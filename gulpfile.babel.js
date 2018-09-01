@@ -14,36 +14,36 @@ const paths = {
 		src: './*.json'
 	},
 	html: {
-		src: 'src/**/*.html',
-		dest: 'build/src',
-		watch: 'src/**/*.html',
+		src: '.src/**/*.html',
+		dest: 'build/.src',
+		watch: '.src/**/*.html',
 	},
 	styles: {
-		src: 'src/assets/scss/style.scss',
-		dest: 'build/src/assets/css',
-		watch: 'src/assets/scss/**/*.scss',
+		src: '.src/assets/scss/style.scss',
+		dest: 'build/.src/assets/css',
+		watch: '.src/assets/scss/**/*.scss',
 	},
 	scripts: {
-		src: 'src/**/*.js',
-		dest: 'build/src',
-		watch: 'src/**/*.js',
+		src: '.src/**/*.js',
+		dest: 'build/.src',
+		watch: '.src/**/*.js',
 	},
 	webfonts: {
-		src: 'src/assets/webfonts/**/*.ttf',
-		dest: 'build/src/assets/webfonts'
+		src: '.src/assets/webfonts/**/*.ttf',
+		dest: 'build/.src/assets/webfonts'
 	},
 	webfontswoff: {
-		src: 'src/assets/webfonts/**/*.woff2',
-		dest: 'build/src/assets/webfonts'
+		src: '.src/assets/webfonts/**/*.woff2',
+		dest: 'build/.src/assets/webfonts'
 	},
 	img: {
-		src: 'src/**/*.png',
-		dest: 'build/src',
-		watch: 'src/**/*.png',
+		src: '.src/**/*.png',
+		dest: 'build/.src',
+		watch: '.src/**/*.png',
 	}
 };
 
-export const clean = () => del(['build/src/assets/css']);
+export const clean = () => del(['build/.src/assets/css']);
 
 export function styles () {
 	return gulp.src(paths.styles.src)
