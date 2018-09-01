@@ -57,15 +57,20 @@ const template = [
 	{
 		label: 'Ver',
 		submenu: [
-			{role: 'reload'},
-			{role: 'forcereload'},
-			{role: 'toggledevtools'},
+			{
+				label: 'Recargar',
+				accelerator: 'CmdOrCtrl+R',
+				role: 'reload'
+			},
 			{type: 'separator'},
 			{role: 'resetzoom'},
 			{role: 'zoomin'},
 			{role: 'zoomout'},
 			{type: 'separator'},
-			{role: 'togglefullscreen'}
+			{
+				label: 'Pantalla Completa',
+				role: 'togglefullscreen'
+			}
 		]
 	},
 	{
@@ -80,8 +85,8 @@ const template = [
 		role: 'help',
 		submenu: [
 			{
-				label: 'Learn More',
-				click () { require('electron').shell.openExternal('https://electronjs.org') }
+				label: 'Sitio Web',
+				click () { require('electron').shell.openExternal('https://thunder-labs.com') }
 			}
 		]
 	}

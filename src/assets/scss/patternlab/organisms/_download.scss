@@ -1,0 +1,47 @@
+.is-download {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: rgba(9, 30, 66, 0.54);
+	position: absolute;
+	width: 100%;
+	z-index: 9999;
+
+	.download {
+		width: 510px;
+		height: 45vh;
+		border-radius: 8px;
+		background: white;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		.download-container {
+			.download-animation {
+				height: 130px;
+				margin-top: 20px;
+
+				i {
+					color: #17a2b8;
+					animation: download-spin infinite 1.2s alternate;
+				}
+			}
+
+			h1 {
+				text-align: center;
+				color: #607D8B;
+			}
+		}
+	}
+}
+
+.hide-download {
+	display: none;
+}
+
+.show-download {
+	display: flex;
+}
+

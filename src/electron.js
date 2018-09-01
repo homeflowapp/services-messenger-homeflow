@@ -25,7 +25,7 @@ if (!fs.existsSync(path_plugins)) {
 
 fs.ensureFileSync(path.join(app.getPath('userData'), 'window-state.json'));
 
-/*const instance = app.makeSingleInstance((argv) => {
+const instance = app.makeSingleInstance((argv) => {
 	if (mainWindow) {
 		if (mainWindow.isMinimized()) mainWindow.restore();
 		mainWindow.focus();
@@ -35,7 +35,7 @@ fs.ensureFileSync(path.join(app.getPath('userData'), 'window-state.json'));
 if (instance) {
 	console.log('Thunder is already running. Exiting...');
 	app.exit();
-}*/
+}
 
 if (linux && ['Pantheon', 'Unity:Unity7'].indexOf(process.env.XDG_CURRENT_DESKTOP) !== -1) {
 	process.env.XDG_CURRENT_DESKTOP = 'Unity';
@@ -54,6 +54,7 @@ const createWindow = () => {
 		height: mainWindowState.height,
 		minWidth: 1024,
 		minHeight: 600,
+		icon: path.join(__dirname, 'assets/media/images/logo', 'logo.png'),
 		titleBarStyle: macOS ? 'hidden' : '',
 		frame: linux,
 		backgroundColor: '#ffffff'
@@ -82,9 +83,9 @@ const createWindow = () => {
 		mainWindow.loadURL(`file://${__dirname}/index.html`)
 	}
 
-	if (dev_mode) {
-		//mainWindow.webContents.openDevTools();
-	}
+	//if (dev_mode) {
+		mainWindow.webContents.openDevTools();
+	//}
 
 	mainWindow.on('close', (e) => {
 		app.quit();

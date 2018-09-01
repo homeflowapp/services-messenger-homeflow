@@ -4,6 +4,7 @@ import ChannelsContainer from "../container/channels/ChannelsContainer";
 import Update from "../ui/statusbar/Update";
 import {version} from '../../../package'
 import ServerUpdate from "../../api/ServerUpdate";
+import Download from "../ui/modal/Download";
 
 export default class App extends Component {
 
@@ -31,6 +32,7 @@ export default class App extends Component {
 			<span>
 				<Intenert/>
 				{ this.state.update && <Update version={this.state.update}/>}
+				<Download/>
 				<ChannelsContainer/>
 			</span>
 		)

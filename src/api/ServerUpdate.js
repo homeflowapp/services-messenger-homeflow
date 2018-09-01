@@ -31,13 +31,6 @@ export default class ServerUpdate {
 
 	static async UpdateApp(versionApp) {
 		try {
-			swal({
-				title: 'Actualizando',
-				text: '.....',
-				icon: 'success',
-				button: false
-			});
-
 			const updateDirectory = path.join(app.getPath('userData'), 'version');
 			const archivePath = path.join(updateDirectory, 'version.tar.gz');
 			const packageUrl = `${server_api}/${version_api}/update/${versionApp}/download`;
@@ -63,6 +56,9 @@ export default class ServerUpdate {
 
 			fs.copySync(path.join(updateDirectory, versionApp, 'package.json'), path.join(__dirname, '../../package.json'));
 			fs.remove(archivePath);
+
+			document.querySelector('.is-download').classList.remove('show-download');
+			document.querySelector('.is-download').classList.add('hide-download');
 
 			swal({
 				title: 'Buen Trabajo!',

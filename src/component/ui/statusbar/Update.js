@@ -4,11 +4,14 @@ import ServerUpdate from "../../../api/ServerUpdate";
 
 export default class Update extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.update = this.update.bind(this);
 	}
 
 	update(version) {
+		document.querySelector('.is-download').classList.remove('hide-download');
+		document.querySelector('.is-download').classList.add('show-download');
+
 		ServerUpdate.UpdateApp(version);
 	}
 
