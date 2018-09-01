@@ -54,7 +54,7 @@ export default class ServerUpdate {
 
 			await sleep(10);
 
-			fs.copySync(path.join(updateDirectory, versionApp, 'package.json'), path.join(__dirname, '../../package.json'));
+			fs.copySync(path.join(updateDirectory, versionApp, 'package.json'), path.join(updateDirectory, 'package.json'));
 			fs.remove(archivePath);
 
 			document.querySelector('.is-download').classList.remove('show-download');

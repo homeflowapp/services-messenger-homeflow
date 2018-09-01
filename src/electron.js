@@ -1,17 +1,16 @@
-import { app, BrowserWindow, shell } from 'electron';
+import {app, BrowserWindow, shell} from 'electron';
 import fs from 'fs-extra';
-import { realpathSync } from 'fs';
+import {realpathSync} from 'fs';
 import createSymlink from 'create-symlink';
 import path from 'path';
 import windowStateKeeper from 'electron-window-state';
 import {dev_mode, linux, macOS, windows} from "./config/environment";
-import version from '../package'
 
 let mainWindow;
 let willQuitApp = false;
 let node_modules_path;
 let loader_app_node_modules_path;
-
+let version;
 let path_version_app = path.join(app.getPath('userData'), 'version');
 let path_plugins = path.join(app.getPath('userData'), 'plugins');
 
@@ -61,23 +60,30 @@ const createWindow = () => {
 	});
 
 	mainWindowState.manage(mainWindow);
-	const loader_app = path.join(app.getPath('userData'), 'version', version.version, 'src');
-	loader_app_node_modules_path = path.join(loader_app, '../node_modules');
+	let version_app = path.join(app.getPath('userData'), 'version', 'package.json');
 
-	if (fs.existsSync(loader_app)) {
-		if (dev_mode) {
-			node_modules_path = path.join(__dirname, '../../', 'node_modules');
-			console.log('Modules dev')
-		} else {
-			node_modules_path = path.join(__dirname, '../', 'node_modules');
-			console.log('Modules prod')
+	if (fs.existsSync(version_app)) {
+		version = require(path.join(app.getPath('userData'), 'version', 'package.json'));
+		const loader_app = path.join(app.getPath('userData'), 'version', version.version, 'src');
+
+		loader_app_node_modules_path = path.join(loader_app, '../node_modules');
+
+		if (fs.existsSync(loader_app)) {
+			if (dev_mode) {
+				node_modules_path = path.join(__dirname, '../../', 'node_modules');
+				console.log('Modules dev')
+			} else {
+				node_modules_path = path.join(__dirname, '../', 'node_modules');
+				console.log('Modules prod')
+			}
+			createSymlink(path.join(node_modules_path), loader_app_node_modules_path).then(() => {
+				realpathSync(loader_app_node_modules_path);
+			});
+
+			console.log(loader_app);
+			mainWindow.loadURL(`file://${loader_app}/index.html`);
 		}
-		createSymlink(path.join(node_modules_path), loader_app_node_modules_path).then(() => {
-			realpathSync(loader_app_node_modules_path);
-		});
 
-		console.log(loader_app);
-		mainWindow.loadURL(`file://${loader_app}/index.html`);
 	}
 	else {
 		mainWindow.loadURL(`file://${__dirname}/index.html`)

@@ -63,6 +63,7 @@ const template = [
 				role: 'reload'
 			},
 			{type: 'separator'},
+			{role: 'toggledevtools'},
 			{role: 'resetzoom'},
 			{role: 'zoomin'},
 			{role: 'zoomout'},
@@ -74,7 +75,8 @@ const template = [
 		]
 	},
 	{
-		role: 'Ventana',
+		label: 'Ventana',
+		role: 'window',
 		submenu: [
 			{role: 'minimize'},
 			{role: 'close'}
