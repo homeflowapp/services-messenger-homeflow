@@ -32,9 +32,9 @@ export default class ServerUpdate {
 	static async UpdateApp(versionApp) {
 		try {
 			swal({
-				title: 'Actualizando...',
-				text: '',
-				icon: 'error',
+				title: 'Actualizando',
+				text: '.....',
+				icon: 'success',
 				button: false
 			});
 

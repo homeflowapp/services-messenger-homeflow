@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ServerUpdate from "../../../api/ServerUpdate";
+import swal from "sweetalert";
 
 export default class NavbarRigth extends Component {
 	constructor(props) {
