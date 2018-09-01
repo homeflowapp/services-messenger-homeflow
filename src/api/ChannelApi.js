@@ -19,13 +19,14 @@ export default class ChannelApi {
 	}
 
 	// Create Channel
-	static async create(channel_id, url) {
+	static async create(channel_id, url, name) {
 		const user_id = localStorage.getItem('uuid');
 		const request = await window.fetch(`${server_api}/${version_api}/channels/channels_create`, this._Request({
 			method: 'POST',
 			body: JSON.stringify(Object.assign({
 				channel_id,
 				user_id,
+				name,
 				url
 			})),
 		}, false));
@@ -33,6 +34,9 @@ export default class ChannelApi {
 		if (!request.ok) {
 			throw request;
 		}
+
+		document.querySelector('.is-slack').classList.remove('show-slack');
+		document.querySelector('.is-slack').classList.add('hide-slack');
 
 		swal({
 			title: "Canal agregado!",

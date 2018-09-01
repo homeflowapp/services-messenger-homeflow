@@ -1,0 +1,77 @@
+.is-slack {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: rgba(9, 30, 66, 0.54);
+	position: absolute;
+	width: 100%;
+	z-index: 9999;
+
+	.slack {
+		width: 460px;
+		height: 55vh;
+		border-radius: 8px;
+		background: white;
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+		.slack-title {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 48px;
+			border-bottom: 1px solid #e9ecef8f;
+			font-size: 26px;
+			font-weight: bold;
+			color: #6c757d !important;
+			padding: 0;
+			margin: 0;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+
+		.slack-close {
+			margin-top: -37px;
+			margin-bottom: 37px;
+			margin-right: 20px;
+		}
+
+		.slack-container {
+			padding-top: 20px;
+			padding-left: 40px;
+			padding-right: 40px;
+
+			label {
+				font-weight: bold;
+				color: #6c757d;
+			}
+
+			.input-group-append {
+				span {
+					font-weight: bold;
+				}
+			}
+
+			.slack-btn {
+				margin-top: 30px;
+			}
+
+			.field-slack {
+				margin-bottom: 20px;
+
+				span.small {
+					color: #FF5722;
+				}
+			}
+
+		}
+	}
+}
+
+.hide-slack {
+	display: none;
+}
+
+.show-slack {
+	display: flex;
+}

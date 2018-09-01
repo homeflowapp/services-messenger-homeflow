@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import Login from "./Login";
 import Register from "./Register";
 import Intenert from "../statusbar/Intenert";
+import Slack from "../modal/Slack";
 
 export default class Welcome extends Component {
 	constructor(props) {
@@ -43,6 +44,7 @@ export default class Welcome extends Component {
 					<Login/>
 					<Register/>
 				</span>
+
 				<div className={'welcome'}>
 					<div className={'welcome-app'}>
 						<div className={'display-3 thunder text-center'}>Thunder</div>

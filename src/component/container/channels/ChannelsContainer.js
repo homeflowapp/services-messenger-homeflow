@@ -11,6 +11,7 @@ import Webview from "../../../webview/Webview";
 import ChannelApi from "../../../api/ChannelApi";
 
 let url;
+let name;
 export default class ChannelsContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -23,6 +24,7 @@ export default class ChannelsContainer extends Component {
 		this.connection = this.connection.bind(this);
 		this.create_channel = this.create_channel.bind(this);
 		this.hideModal = this.hideModal.bind(this);
+		this.hideSlack = this.hideSlack.bind(this);
 		this.channels_user = this.channels_user.bind(this);
 		this.channels_api = this.channels_api.bind(this);
 	}
@@ -64,31 +66,37 @@ export default class ChannelsContainer extends Component {
 	}
 
 	create_channel(channelId) {
-		swal({
-			title: "Por favor espere",
-			text: "El servicio se esta agregando...",
-			button: false,
-		});
-
 		if (channelId === 'slack') {
-			swal({
-				title: "Servicio Slack",
-				text: 'Agregue su canal de slack. Ej: thunder.slack.com',
-				content: "input",
-				button: {
-					text: "Agregar",
-					closeModal: false,
-				},
-			}).then(url => {
-				const channel = ChannelApi.create(channelId, url);
+			this.hideModal();
+			document.querySelector('.is-slack').classList.remove('hide-slack');
+			document.querySelector('.is-slack').classList.add('show-slack');
+
+			if (this.refs.name.value !== '' && this.refs.url.value !== '') {
+				swal({
+					title: "Por favor espere",
+					text: "El servicio se esta agregando...",
+					button: false,
+				});
+
+				const channel = ChannelApi.create(channelId, this.refs.url.value, this.refs.name.value);
 				Promise.resolve(channel.then((channel) => {
-					this.new_channel(channel.channel, channel.name, channel.url, channel.partition);
+					this.refs.name.value = '';
+					this.refs.url.value = '';
+
+					this.new_channel(channel.channel, channel.name, channel.url, channel.uuid, channel.partition);
 					this.connection();
 				}));
-			})
+			}
+			this._verifyText();
 		}
 		else  {
-			const channel = ChannelApi.create(channelId, url);
+			swal({
+				title: "Por favor espere",
+				text: "El servicio se esta agregando...",
+				button: false,
+			});
+
+			const channel = ChannelApi.create(channelId, url, name);
 			Promise.resolve(channel.then((channel) => {
 				this.new_channel(channel.channel, channel.name, channel.url, channel.uuid, channel.partition);
 				this.connection();
@@ -110,14 +118,74 @@ export default class ChannelsContainer extends Component {
 		}));
 	}
 
+	_verifyText() {
+		if (this.refs.name.value === '') {
+			this.setState({name: this.state.name = true});
+		} else {
+			this.setState({name: this.state.name = false});
+		}
+
+		if (this.refs.url.value === '') {
+			this.setState({url: this.state.url = true});
+		} else {
+			this.setState({url: this.state.url = false});
+		}
+	}
+
 	hideModal() {
 		document.querySelector('.services-list').classList.remove('show-services');
 		document.querySelector('.services-list').classList.add('hide-services');
 	}
 
+	hideSlack() {
+		document.querySelector('.is-slack').classList.remove('show-slack');
+		document.querySelector('.is-slack').classList.add('hide-slack');
+	}
+
 	render() {
 		return (
 			<span>
+				<span>
+				<div className={'mx-auto is-slack hide-slack'}>
+					<div className={'slack'}>
+						<div className={'slack-title bg-thunder'}>
+							Agregar Slack
+						</div>
+
+						<div className={'slack-close'}>
+							<span className={'close'} onClick={this.hideSlack}><i className="fas fa-times"/></span>
+						</div>
+
+						<div className={'col-12 slack-container'}>
+							<div className={'col-12 field-slack'}>
+								<label htmlFor="basic-url">Nombre de tu espacio de trabajo</label>
+							<div className="input-group">
+								<input type="text" ref={'name'} className="form-control" placeholder="Nombre de tu espacio"/>
+							</div>
+								{this.state.name && <span className={'small'}>Nombre es requerido.</span>}
+							</div>
+
+							<div className={'col-12 field-slack'}>
+							<label htmlFor="basic-url">Introduce la URL Slack de tu espacio de trabajo</label>
+							<div className="input-group">
+								<input type="text" ref={'url'} className="form-control text-right" placeholder="url-de-tu-espacio"/>
+								<div className="input-group-append">
+									<span className="input-group-text">.slack.com</span>
+								</div>
+							</div>
+								{this.state.url && <span className={'small'}>URL es requerida.</span>}
+								</div>
+
+							<div className="input-group mb-3">
+								<div className={'slack-btn mx-auto'}>
+									<a className={'btn btn-thunder-secundary-white text-center'} onClick={() => this.create_channel('slack')}>Agregar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+
 				<span>
 				<div className={'mx-auto services-list hide-services'}>
 					<div className={'services-box'}>
