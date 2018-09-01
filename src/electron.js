@@ -83,9 +83,9 @@ const createWindow = () => {
 		mainWindow.loadURL(`file://${__dirname}/index.html`)
 	}
 
-	//if (dev_mode) {
+	if (dev_mode) {
 		mainWindow.webContents.openDevTools();
-	//}
+	}
 
 	mainWindow.on('close', (e) => {
 		app.quit();
