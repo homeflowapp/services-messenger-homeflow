@@ -9,7 +9,7 @@ import sassVariables from 'gulp-sass-variables';
 
 const paths = {
 	dest: 'build',
-	src: 'src',
+	src: '.src',
 	packages: {
 		src: './*.json'
 	},

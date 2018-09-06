@@ -1,7 +1,8 @@
 import React from 'react'
-import {shell, remote} from 'electron'
+import {shell, remote, clipboard} from 'electron'
 import url from 'url'
 import path from 'path'
+//import sound from './inbox.mp3'
 
 const Menu = remote.Menu;
 const app = remote.app;
@@ -21,7 +22,7 @@ export class ChannelsWebView {
 					}
 					else {
 						badge.classList.remove('thunder-badge');
-						badge.innerHTML = event.args[0];
+						badge.innerHTML = '';
 					}
 				}
 
@@ -59,8 +60,36 @@ export class ChannelsWebView {
 				}
 			});
 
-			webview[i].getWebContents().on('context-menu', (e, params) => {
+			webview[i].addEventListener('dom-ready', () => {
+				webview[i].send('ping', webview[i].getAttribute('id'));
+			});
 
+			webview[i].addEventListener('did-start-loading', () => {
+				document.querySelector('.thunder-progress').classList.remove('thunder-progress-hide');
+				document.querySelector('.thunder-progress').classList.add('thunder-progress-show');
+			});
+
+			webview[i].addEventListener('did-stop-loading', () => {
+				document.querySelector('.thunder-progress').classList.remove('thunder-progress-show');
+				document.querySelector('.thunder-progress').classList.add('thunder-progress-hide');
+			});
+
+			webview[i].addEventListener('crashed', () => {
+				webview[i].reload();
+			});
+
+			webview[i].addEventListener('gpu-crashed', () => {
+				remote.app.exit(0);
+			});
+
+			webview[i].addEventListener('new-window', (e) => {
+				const protocol = url.parse(e.url).protocol;
+				if (protocol === 'http:' || protocol === 'https:') {
+					shell.openExternal(e.url);
+				}
+			});
+
+			webview[i].getWebContents().on('context-menu', (e, params) => {
 				console.log(params);
 				const WebviewMenu = Menu.buildFromTemplate([
 					{
@@ -68,6 +97,13 @@ export class ChannelsWebView {
 						accelerator: 'CmdOrCtrl+Alt+R',
 						click: function () {
 							webview[i].reload();
+						}
+					},
+					{
+						label: 'Obtener url del sitio',
+						accelerator: 'CmdOrCtrl+X',
+						click: function () {
+							remote.clipboard.write({text: webview[i].getURL()});
 						}
 					},
 					{type: 'separator'},
@@ -115,12 +151,11 @@ export class ChannelsWebView {
 					{type: 'separator'},
 					{
 						label: 'Inspeccionar',
-						accelerator: 'CmdOrCtrl+A',
+						accelerator: 'CmdOrCtrl+I',
 						click: function () {
-							webview[i].openDevTools();
+							webview[i].getWebContents().openDevTools();
 						}
 					},
-					{type: 'separator'},
 					{
 						label: 'Salir de la aplicacion',
 						accelerator: 'CmdOrCtrl+Q',
@@ -132,35 +167,6 @@ export class ChannelsWebView {
 
 				WebviewMenu.popup(remote.getCurrentWindow());
 
-			});
-
-			webview[i].addEventListener('dom-ready', () => {
-				webview[i].send('ping', webview[i].getAttribute('id'));
-			});
-
-			webview[i].addEventListener('did-start-loading', () => {
-				document.querySelector('.thunder-progress').classList.remove('thunder-progress-hide');
-				document.querySelector('.thunder-progress').classList.add('thunder-progress-show');
-			});
-
-			webview[i].addEventListener('did-stop-loading', () => {
-				document.querySelector('.thunder-progress').classList.remove('thunder-progress-show');
-				document.querySelector('.thunder-progress').classList.add('thunder-progress-hide');
-			});
-
-			webview[i].addEventListener('crashed', () => {
-				webview[i].reload();
-			});
-
-			webview[i].addEventListener('gpu-crashed', () => {
-				remote.app.exit(0);
-			});
-
-			webview[i].addEventListener('new-window', (e) => {
-				const protocol = url.parse(e.url).protocol;
-				if (protocol === 'http:' || protocol === 'https:') {
-					shell.openExternal(e.url);
-				}
 			});
 		}
 	}

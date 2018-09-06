@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (count !== temp) {
 			if (count === 0) {
-				ipcRenderer.sendToHost('');
+				ipcRenderer.sendToHost('count-message', '');
 				temp = 0;
 			} else {
 				ipcRenderer.sendToHost('count-message', count);

@@ -7,13 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const notification = document.querySelector("#notificationsCountValue").innerHTML;
         const message = document.querySelector("#mercurymessagesCountValue").innerHTML;
         const friend = document.querySelector("#requestsCountValue").innerHTML;
-        const data = (parseInt(notification) + parseInt(message) + parseInt(friend));
-
-        count = parseInt(data, 10);
+			  count = (parseInt(notification) + parseInt(message) + parseInt(friend));
 
         if (count !== temp) {
             if (count === 0) {
-                ipcRenderer.sendToHost('');
+                ipcRenderer.sendToHost('count-message', '');
                 temp = 0;
             } else {
 							ipcRenderer.sendToHost('count-message', count);

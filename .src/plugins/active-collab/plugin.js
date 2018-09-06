@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (count !== temp) {
 				if (count === 0) {
-					ipcRenderer.sendToHost('');
+					ipcRenderer.sendToHost('count-message', '');
 				} else {
 					ipcRenderer.sendToHost('count-message', count);
 					ipcRenderer.sendToHost('notification', 'Active Collab', 'Tienes Nuevas tareas asignadas');
@@ -21,21 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 	}, 1000);
-
-    /*const originalWindowOpen = window.open;
-
-    window.open = (url, frameName, features) => {
-
-        if (/(app|my)\.activecollab\.com/.test(url) || /(my|app)\.activecollab\.com/.test(url)) {
-        	alert('Luis');
-            return remote.getCurrentWebContents().loadURL(url);
-        }
-        else {
-        	alert('luis');
-            return originalWindowOpen(url, frameName, features);
-        }
-    };
-*/
 
 }, false);
 

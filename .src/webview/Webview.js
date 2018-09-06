@@ -25,8 +25,7 @@ export default class Webview extends Component {
 								partition={'persist:' + channel.partition}
 								preload={`file://${path.join(__dirname, '../plugins/' + channel.channel, 'plugin.js')}`}
 								autosize={'on'}
-								plugins={'true'}
-								allowpopups={'true'}/>
+								plugins={'true'}/>
 						)
 					})
 				}

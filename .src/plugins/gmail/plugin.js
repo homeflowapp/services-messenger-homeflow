@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (count !== temp) {
             if (count === 0) {
-                ipcRenderer.sendToHost('');
-                temp = 0;
+							ipcRenderer.sendToHost('count-message', '');
+							temp = 0;
             } else {
 							ipcRenderer.sendToHost('count-message', count);
 							ipcRenderer.sendToHost('notification', 'Gmail', 'Tienes un nuevo mensaje');
-                temp = count;
+							temp = count;
             }
         }
     }, 1000);
