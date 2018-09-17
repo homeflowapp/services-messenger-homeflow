@@ -37,6 +37,10 @@ export class ChannelsWebView {
 							body: event.args[1]
 						});
 
+						const audio = new Audio();
+						audio.src = path.join(__dirname, '../../assets/media/sound', 'inbox.mp3');
+						audio.play();
+
 						Notify.onclick = () => {
 							const tabs_moved = document.querySelector('#tabs_moved');
 							const tabs_moved_li = document.querySelectorAll('.tabs_moved_li');

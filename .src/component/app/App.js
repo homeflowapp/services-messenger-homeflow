@@ -5,6 +5,7 @@ import Update from "../ui/statusbar/Update";
 import {version} from '../../../package'
 import ServerUpdate from "../../api/ServerUpdate";
 import Download from "../ui/modal/Download";
+import path from "path";
 
 export default class App extends Component {
 
