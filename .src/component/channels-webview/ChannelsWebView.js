@@ -30,13 +30,6 @@ export class ChannelsWebView {
 								console.log("Sound error: "+error)
 							});
 						}
-
-
-						/*audio.pause();
-						audio.currentTime = 0;
-						audio.play().catch(function(e) {
-							console.log('There was an error', e);
-						});*/
 					}
 					else {
 						badge.classList.remove('thunder-badge');
