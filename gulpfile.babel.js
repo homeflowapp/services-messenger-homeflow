@@ -49,7 +49,7 @@ const paths = {
 
 export const clean = () => del(['build/.src/assets/css']);
 
-export function styles () {
+export function styles() {
 	return gulp.src(paths.styles.src)
 		.pipe(sassVariables({
 			$env: process.env.NODE_ENV === 'development' ? 'development' : 'production',
@@ -65,48 +65,48 @@ export function styles () {
 }
 
 
-export function scripts () {
+export function scripts() {
 	return gulp.src(paths.scripts.src, {sourcemaps: false})
 		.pipe(babel())
 		.pipe(gulp.dest(paths.scripts.dest))
 }
 
-export function mp3 () {
+export function mp3() {
 	return gulp.src(paths.mp3.src, {sourcemaps: false})
 		.pipe(gulp.dest(paths.mp3.dest))
 }
 
-export function webfonts () {
+export function webfonts() {
 	return gulp.src(paths.webfonts.src, {sourcemaps: false})
 		.pipe(gulp.dest(paths.webfonts.dest))
 }
 
-export function webfontswoff () {
+export function webfontswoff() {
 	return gulp.src(paths.webfontswoff.src, {sourcemaps: false})
 		.pipe(gulp.dest(paths.webfontswoff.dest))
 }
 
-export function img () {
+export function img() {
 	return gulp.src(paths.img.src, {sourcemaps: false})
 		.pipe(gulp.dest(paths.img.dest))
 }
 
-export function html () {
+export function html() {
 	return gulp.src(paths.html.src)
 		.pipe(gulp.dest(paths.html.dest))
 }
 
-export function mvpackage () {
+export function mvpackage() {
 	return gulp.src(['./package.json'])
 		.pipe(gulp.dest(paths.dest))
 }
 
-export function version () {
+export function version() {
 	return gulp.src(paths.version.src)
 		.pipe(gulp.dest(paths.version.dest))
 }
 
-export function src () {
+export function src() {
 	return gulp.src(
 		[
 			`${paths.src}/*`,
@@ -117,7 +117,7 @@ export function src () {
 		.pipe(gulp.dest(paths.dest))
 }
 
-export function watch () {
+export function watch() {
 	gulp.watch(paths.scripts.watch, scripts);
 	gulp.watch(paths.styles.watch, styles);
 	gulp.watch(paths.html.watch, html);
@@ -131,7 +131,7 @@ export function webserver() {
 	])
 		.pipe(server({
 			livereload: true,
-			port: 3000
+			port: 8000
 		}));
 }
 
@@ -139,4 +139,4 @@ const build = gulp.series(clean, gulp.parallel(mvpackage), gulp.parallel(html, w
 export {build}
 
 const dev = gulp.series(build, gulp.parallel(webserver, watch));
-export { dev }
+export {dev}

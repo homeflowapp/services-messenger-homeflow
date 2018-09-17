@@ -2,7 +2,7 @@ import React from 'react'
 import {shell, remote, clipboard} from 'electron'
 import url from 'url'
 import path from 'path'
-//import sound from './inbox.mp3'
+//import sound from '../../assets/media/sound/inbox.mp3'
 
 const Menu = remote.Menu;
 const app = remote.app;
@@ -19,6 +19,14 @@ export class ChannelsWebView {
 					if (event.args[0]) {
 						badge.classList.add('thunder-badge');
 						badge.innerHTML = event.args[0];
+
+						const audio = new Audio();
+						audio.src = path.join(__dirname, '../../assets/media/sound', 'inbox.mp3');
+						audio.pause();
+						audio.currentTime = 0;
+						audio.play().catch(function(e) {
+							console.log('There was an error', e);
+						});
 					}
 					else {
 						badge.classList.remove('thunder-badge');
@@ -36,10 +44,6 @@ export class ChannelsWebView {
 							icon: path.join(__dirname, '../../plugins/' + event.target.title, 'icon.png'),
 							body: event.args[1]
 						});
-
-						const audio = new Audio();
-						audio.src = path.join(__dirname, '../../assets/media/sound', 'inbox.mp3');
-						audio.play();
 
 						Notify.onclick = () => {
 							const tabs_moved = document.querySelector('#tabs_moved');
