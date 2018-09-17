@@ -20,13 +20,23 @@ export class ChannelsWebView {
 						badge.classList.add('thunder-badge');
 						badge.innerHTML = event.args[0];
 
-						const audio = new Audio();
-						audio.src = path.join(__dirname, '../../assets/media/sound', 'inbox.mp3');
-						audio.pause();
+						const audio = new Audio(path.join(__dirname, '../../assets/media/sound', 'inbox.mp3'));
+						const promise = audio.play();
+
+						if (promise !== undefined) {
+							promise.then(() => {
+								//audio.play();
+							}).catch(error => {
+								console.log("Sound error: "+error)
+							});
+						}
+
+
+						/*audio.pause();
 						audio.currentTime = 0;
 						audio.play().catch(function(e) {
 							console.log('There was an error', e);
-						});
+						});*/
 					}
 					else {
 						badge.classList.remove('thunder-badge');

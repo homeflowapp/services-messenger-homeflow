@@ -31,7 +31,7 @@
     "node-fetch": "^2.2.0",
     "npm": "^6.4.0",
     "popper.js": "^1.14.4",
-    "react": "^16.4.2",
+    "react": "^16.5.1",
     "react-contextmenu": "^2.9.3",
     "react-detect-offline": "^1.0.6",
     "react-dom": "^16.4.2",
