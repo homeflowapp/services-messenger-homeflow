@@ -32,6 +32,10 @@ const paths = {
 		src: '.src/**/*.mp3',
 		dest: 'build/.src',
 	},
+	dll: {
+		src: '.src/lib/**/*.*',
+		dest: 'build/.src/lib',
+	},
 	webfonts: {
 		src: '.src/assets/webfonts/**/*.ttf',
 		dest: 'build/.src/assets/webfonts'
@@ -74,6 +78,11 @@ export function scripts() {
 export function mp3() {
 	return gulp.src(paths.mp3.src, {sourcemaps: false})
 		.pipe(gulp.dest(paths.mp3.dest))
+}
+
+export function dll() {
+	return gulp.src(paths.dll.src, {sourcemaps: false})
+		.pipe(gulp.dest(paths.dll.dest))
 }
 
 export function webfonts() {
@@ -135,7 +144,7 @@ export function webserver() {
 		}));
 }
 
-const build = gulp.series(clean, gulp.parallel(mvpackage), gulp.parallel(html, webfonts, webfontswoff, img, styles, scripts, mp3));
+const build = gulp.series(clean, gulp.parallel(mvpackage), gulp.parallel(html, webfonts, webfontswoff, img, styles, scripts, mp3, dll));
 export {build}
 
 const dev = gulp.series(build, gulp.parallel(webserver, watch));

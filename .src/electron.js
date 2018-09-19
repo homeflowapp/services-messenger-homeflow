@@ -6,6 +6,9 @@ import path from 'path';
 import windowStateKeeper from 'electron-window-state';
 import {dev_mode, linux, macOS, windows} from "./config/environment";
 
+const widevine = require('electron-widevinecdm');
+widevine.load(app);
+
 let mainWindow;
 let willQuitApp = false;
 let node_modules_path;
@@ -40,6 +43,9 @@ if (linux && ['Pantheon', 'Unity:Unity7'].indexOf(process.env.XDG_CURRENT_DESKTO
 	process.env.XDG_CURRENT_DESKTOP = 'Unity';
 }
 
+//app.commandLine.appendSwitch('widevine-cdm-path', path.join(__dirname, "lib", "widevinecdm.dll"));
+//app.commandLine.appendSwitch('widevine-cdm-version', '1.4.8.866');
+
 const createWindow = () => {
 	const mainWindowState = windowStateKeeper({
 		defaultWidth: 1024,
@@ -56,7 +62,10 @@ const createWindow = () => {
 		icon: path.join(__dirname, 'assets/media/images/logo', 'logo.png'),
 		titleBarStyle: macOS ? 'hidden' : '',
 		frame: linux,
-		backgroundColor: '#ffffff'
+		backgroundColor: '#ffffff',
+		webPreferences: {
+			plugins: true
+		}
 	});
 
 	mainWindowState.manage(mainWindow);
