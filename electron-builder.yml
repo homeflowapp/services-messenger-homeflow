@@ -1,0 +1,27 @@
+directories:
+  app: ./build
+  output: ./releases
+
+appId: "com.thunderlabs.thunder"
+asar: false
+
+compression: maximum
+
+linux:
+  icon: ./resources/icons
+  category: Network;
+  executableName: thunder
+  synopsis: "Thunder."
+  description: "Thunder Desktop App."
+  target:
+  - target: AppImage
+  - target: deb
+  - target: tar.gz
+
+nsis:
+  perMachine: false
+  oneClick: true
+
+protocols:
+  name: Thunder
+  schemes: [thunder]

@@ -61,7 +61,6 @@ const createWindow = () => {
 		minHeight: 600,
 		icon: path.join(__dirname, 'assets/media/images/logo', 'logo.png'),
 		titleBarStyle: macOS ? 'hidden' : '',
-		frame: linux,
 		backgroundColor: '#ffffff',
 		webPreferences: {
 			plugins: true
