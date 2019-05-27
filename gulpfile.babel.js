@@ -9,49 +9,49 @@ import sassVariables from 'gulp-sass-variables';
 
 const paths = {
 	dest: 'build',
-	src: '.src',
+	src: 'src',
 	packages: {
 		src: './*.json'
 	},
 	html: {
-		src: '.src/**/*.html',
-		dest: 'build/.src',
-		watch: '.src/**/*.html',
+		src: 'src/**/*.html',
+		dest: 'build/src',
+		watch: 'src/**/*.html',
 	},
 	styles: {
-		src: '.src/assets/scss/style.scss',
-		dest: 'build/.src/assets/css',
-		watch: '.src/assets/scss/**/*.scss',
+		src: 'src/assets/scss/style.scss',
+		dest: 'build/src/assets/css',
+		watch: 'src/assets/scss/**/*.scss',
 	},
 	scripts: {
-		src: '.src/**/*.js',
-		dest: 'build/.src',
-		watch: '.src/**/*.js',
+		src: 'src/**/*.js',
+		dest: 'build/src',
+		watch: 'src/**/*.js',
 	},
 	mp3: {
-		src: '.src/**/*.mp3',
-		dest: 'build/.src',
+		src: 'src/**/*.mp3',
+		dest: 'build/src',
 	},
 	dll: {
-		src: '.src/lib/**/*.*',
-		dest: 'build/.src/lib',
+		src: 'src/lib/**/*.*',
+		dest: 'build/src/lib',
 	},
 	webfonts: {
-		src: '.src/assets/webfonts/**/*.ttf',
-		dest: 'build/.src/assets/webfonts'
+		src: 'src/assets/webfonts/**/*.ttf',
+		dest: 'build/src/assets/webfonts'
 	},
 	webfontswoff: {
-		src: '.src/assets/webfonts/**/*.woff2',
-		dest: 'build/.src/assets/webfonts'
+		src: 'src/assets/webfonts/**/*.woff2',
+		dest: 'build/src/assets/webfonts'
 	},
 	img: {
-		src: '.src/**/*.png',
-		dest: 'build/.src',
-		watch: '.src/**/*.png',
+		src: 'src/**/*.png',
+		dest: 'build/src',
+		watch: 'src/**/*.png',
 	}
 };
 
-export const clean = () => del(['build/.src/assets/css']);
+export const clean = () => del(['build/src/assets/css']);
 
 export function styles() {
 	return gulp.src(paths.styles.src)
@@ -145,7 +145,9 @@ export function webserver() {
 }
 
 const build = gulp.series(clean, gulp.parallel(mvpackage), gulp.parallel(html, webfonts, webfontswoff, img, styles, scripts, mp3, dll));
-export {build}
+gulp.task('build', build);
 
 const dev = gulp.series(build, gulp.parallel(webserver, watch));
-export {dev}
+gulp.task('dev', dev);
+
+gulp.task('default', build);
