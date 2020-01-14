@@ -25,7 +25,7 @@
     "gulp-sass-variables": "^1.2.0",
     "i": "^0.3.6",
     "install": "^0.12.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "mobx": "^3.4.1",
     "mobx-react": "^5.0.0",
     "mobx-react-router": "^4.0.1",
