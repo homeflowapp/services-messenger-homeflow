@@ -47,13 +47,12 @@ export default class Welcome extends Component {
 
 				<div className={'welcome'}>
 					<div className={'welcome-app'}>
-						<div className={'display-3 thunder text-center'}>Thunder</div>
+						<div className={'display-3 thunder text-center'}>Homeflow Messenger</div>
 						<div
 							className="text-center description">Servicios de trabajo, chat y mensajería en una sola aplicación.</div>
 
 						<div className="col-12 mx-auto login">
-							<Link className="btn btn-thunder-primary-welcome text-center"
-							      onClick={this.show_login}>Iniciar sesión</Link>
+							<Link className="btn btn-thunder-primary-welcome text-center" onClick={this.show_login}>Iniciar sesión</Link>
 							<Link className="btn btn-thunder-secundary-white text-center"
 							      onClick={this.register}>Crear una cuenta</Link>
 						</div>
@@ -91,8 +90,7 @@ export default class Welcome extends Component {
 
 					<div className={'powered'}>
 						<span>
-							<strong>Thunder <i
-								className="fas fa-copyright"/> 2018</strong> | Powered by <strong>Luis Solórzano</strong>
+							<strong>Homeflow Messenger<i className="fas fa-copyright"/> 2020</strong> | Powered by <strong>Homeflow Inc</strong>
 						</span>
 					</div>
 				</div>

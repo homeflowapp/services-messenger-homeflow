@@ -2,7 +2,7 @@ directories:
   app: ./build
   output: ./releases
 
-appId: "com.thunderlabs.thunder"
+appId: "com.homeflow.messenger"
 asar: false
 
 compression: maximum
@@ -11,8 +11,8 @@ linux:
   icon: ./resources/icons
   category: Network;
   executableName: thunder
-  synopsis: "Thunder."
-  description: "Thunder Desktop App."
+  synopsis: "Homeflow."
+  description: "Homeflow Messenger Desktop."
   target:
   - target: AppImage
   - target: deb

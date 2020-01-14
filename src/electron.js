@@ -39,7 +39,7 @@ fs.ensureFileSync(path.join(app.getPath('userData'), 'window-state.json'));
 });*/
 
 // Force single window
-const gotTheLock = app.requestSingleInstanceLock();
+/*const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
     app.quit();
 } else {
@@ -71,7 +71,7 @@ if (!gotTheLock) {
             }
         }
     });
-}
+}*/
 
 /*
 if (instance) {
