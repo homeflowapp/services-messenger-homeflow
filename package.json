@@ -23,7 +23,7 @@
     "email-validator": "^2.0.4",
     "fs-extra": "^7.0.1",
     "gulp-sass-variables": "^1.2.0",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "install": "^0.12.2",
     "jquery": "^3.4.1",
     "mobx": "^3.4.1",
