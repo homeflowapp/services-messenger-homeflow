@@ -29,7 +29,7 @@
     "mobx": "^3.4.1",
     "mobx-react": "^5.4.4",
     "mobx-react-router": "^4.1.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "npm": "^6.13.6",
     "popper.js": "^1.16.0",
     "react": "^16.12.0",
